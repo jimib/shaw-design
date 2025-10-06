@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "accent" | "outline" | "ghost";
+  variant?: "primary" | "secondary" | "accent" | "outline" | "ghost" | "cms";
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
   onClick?: () => void;
@@ -57,7 +57,7 @@ const StyledButton = styled.button<{
     if ($disabled) {
       return `
         background: ${theme.colors.gray[300]};
-        color: ${theme.colors.text.disabled};
+        color: ${theme.colors.mutedForeground};
         opacity: 0.6;
       `;
     }
@@ -66,7 +66,7 @@ const StyledButton = styled.button<{
       case "primary":
         return `
           background: ${theme.colors.primary};
-          color: ${theme.colors.text.inverse};
+          color: ${theme.colors.primaryForeground};
           &:hover {
             background: ${theme.colors.primaryHover};
           }
@@ -77,7 +77,7 @@ const StyledButton = styled.button<{
       case "secondary":
         return `
           background: ${theme.colors.secondary};
-          color: ${theme.colors.text.inverse};
+          color: ${theme.colors.secondaryForeground};
           &:hover {
             background: ${theme.colors.secondaryHover};
           }
@@ -88,7 +88,7 @@ const StyledButton = styled.button<{
       case "accent":
         return `
           background: ${theme.colors.accent};
-          color: ${theme.colors.text.inverse};
+          color: ${theme.colors.accentForeground};
           &:hover {
             background: ${theme.colors.accentHover};
           }
@@ -103,7 +103,7 @@ const StyledButton = styled.button<{
           border: 2px solid ${theme.colors.primary};
           &:hover {
             background: ${theme.colors.primary};
-            color: ${theme.colors.text.inverse};
+            color: ${theme.colors.primaryForeground};
           }
           &:focus {
             box-shadow: 0 0 0 3px ${theme.colors.primary}20;
@@ -114,7 +114,21 @@ const StyledButton = styled.button<{
           background: transparent;
           color: ${theme.colors.primary};
           &:hover {
-            background: ${theme.colors.gray[100]};
+            background: ${theme.colors.muted};
+          }
+          &:focus {
+            box-shadow: 0 0 0 3px ${theme.colors.primary}20;
+          }
+        `;
+      case "cms":
+        return `
+          background: ${theme.colors.gradients.primary};
+          color: ${theme.colors.primaryForeground};
+          font-weight: ${theme.typography.fontWeight.semibold};
+          &:hover {
+            box-shadow: ${theme.colors.shadows.glow};
+            transform: scale(1.02);
+            transition: ${theme.colors.transitions.smooth};
           }
           &:focus {
             box-shadow: 0 0 0 3px ${theme.colors.primary}20;
@@ -123,7 +137,7 @@ const StyledButton = styled.button<{
       default:
         return `
           background: ${theme.colors.primary};
-          color: ${theme.colors.text.inverse};
+          color: ${theme.colors.primaryForeground};
           &:hover {
             background: ${theme.colors.primaryHover};
           }

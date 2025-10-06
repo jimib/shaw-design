@@ -11,7 +11,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["primary", "secondary", "accent", "outline", "ghost"],
+      options: ["primary", "secondary", "accent", "outline", "ghost", "cms"],
     },
     size: {
       control: { type: "select" },
@@ -66,6 +66,14 @@ export const Ghost: Story = {
   },
 };
 
+export const CMS: Story = {
+  args: {
+    children: "Sign In",
+    variant: "cms",
+    size: "lg",
+  },
+};
+
 export const Small: Story = {
   args: {
     children: "Small",
@@ -99,6 +107,7 @@ export const AllVariants: Story = {
       <Button variant="accent">Accent</Button>
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
+      <Button variant="cms">CMS</Button>
     </div>
   ),
 };

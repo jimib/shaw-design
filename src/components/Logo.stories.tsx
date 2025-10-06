@@ -11,7 +11,7 @@ const meta: Meta<typeof Logo> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["dark", "light"],
+      options: ["dark", "light", "shaw"],
     },
     size: {
       control: { type: "number", min: 50, max: 300, step: 10 },
@@ -39,6 +39,13 @@ export const Light: Story = {
   },
 };
 
+export const Shaw: Story = {
+  args: {
+    variant: "shaw",
+    size: 120,
+  },
+};
+
 export const Small: Story = {
   args: {
     variant: "dark",
@@ -53,7 +60,7 @@ export const Large: Story = {
   },
 };
 
-export const BothVariants: Story = {
+export const AllVariants: Story = {
   render: () => (
     <div className="flex gap-8 items-center">
       <div className="bg-white p-4 rounded-lg">
@@ -61,6 +68,9 @@ export const BothVariants: Story = {
       </div>
       <div className="bg-gray-800 p-4 rounded-lg">
         <Logo variant="light" size={120} />
+      </div>
+      <div className="bg-gradient-to-br from-purple-900 to-pink-900 p-4 rounded-lg">
+        <Logo variant="shaw" size={120} />
       </div>
     </div>
   ),
