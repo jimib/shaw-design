@@ -1,0 +1,11 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { PageLayout } from "./PageLayout";
+declare const meta: Meta<typeof PageLayout>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const WithSidebar: Story;
+export declare const WithHeaderAndSidebar: Story;
+export declare const AuthLayoutExample: Story;
+export declare const DashboardLayoutExample: Story;
+export declare const ContentLayoutExample: Story;

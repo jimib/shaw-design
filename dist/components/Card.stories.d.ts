@@ -1,0 +1,9 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { Card } from "./Card";
+declare const meta: Meta<typeof Card>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const Gradient: Story;
+export declare const Vintage: Story;
+export declare const AllVariants: Story;

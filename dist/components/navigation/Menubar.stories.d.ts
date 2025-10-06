@@ -1,0 +1,11 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { Menubar } from "./Menubar";
+declare const meta: Meta<typeof Menubar>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const Minimal: Story;
+export declare const Bordered: Story;
+export declare const WithSeparators: Story;
+export declare const WithActions: Story;
+export declare const AllVariants: Story;

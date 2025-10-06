@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { Separator } from "./Separator";
+declare const meta: Meta<typeof Separator>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Horizontal: Story;
+export declare const Vertical: Story;
+export declare const InContent: Story;
+export declare const InNavigation: Story;
+export declare const AllOrientations: Story;

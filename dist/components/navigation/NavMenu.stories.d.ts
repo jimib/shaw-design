@@ -1,0 +1,11 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { NavMenu } from "./NavMenu";
+declare const meta: Meta<typeof NavMenu>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const Pills: Story;
+export declare const Underline: Story;
+export declare const Vertical: Story;
+export declare const WithTriggers: Story;
+export declare const AllVariants: Story;

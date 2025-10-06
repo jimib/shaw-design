@@ -1,0 +1,11 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { Logo } from "./Logo";
+declare const meta: Meta<typeof Logo>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Dark: Story;
+export declare const Light: Story;
+export declare const Shaw: Story;
+export declare const Small: Story;
+export declare const Large: Story;
+export declare const AllVariants: Story;
