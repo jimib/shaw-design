@@ -19,6 +19,15 @@ A comprehensive design system package for Shaw Heritage micro-apps, providing sh
 npm install @jimib/shaw-design
 ```
 
+### React Version Compatibility
+
+This design system supports both React 18 and React 19:
+
+- **React 18**: Full compatibility with all features
+- **React 19**: Full compatibility with all features and new React 19 capabilities
+
+The package uses modern React patterns and is built to work seamlessly across both versions.
+
 ## 🎨 Usage
 
 ### Design Tokens
@@ -306,6 +315,7 @@ Visit `http://localhost:6006` to view the component library.
 
 - Node.js 16+
 - npm 7+
+- React 18+ or React 19+
 
 ### Setup
 

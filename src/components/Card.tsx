@@ -5,6 +5,7 @@ interface CardProps {
   children: React.ReactNode;
   variant?: "default" | "gradient" | "vintage";
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const StyledCard = styled.div<{ $variant: CardProps["variant"] }>`
@@ -46,9 +47,10 @@ export const Card: React.FC<CardProps> = ({
   children,
   variant = "default",
   className,
+  style,
 }) => {
   return (
-    <StyledCard $variant={variant} className={className}>
+    <StyledCard $variant={variant} className={className} style={style}>
       {children}
     </StyledCard>
   );

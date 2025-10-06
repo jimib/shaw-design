@@ -52,12 +52,12 @@ const HeaderContent = styled.div<{ $variant: HeaderProps["variant"] }>`
   margin: 0 auto;
   width: 100%;
 
-  ${({ $variant }) => {
+  ${({ $variant, theme }) => {
     switch ($variant) {
       case "hero":
         return `
           flex-direction: column;
-          gap: ${({ theme }) => theme.spacing.lg};
+          gap: ${theme.spacing.lg};
         `;
       default:
         return `

@@ -64,14 +64,29 @@ npm install -D storybook @storybook/react-vite @storybook/addon-essentials @stor
     "lint": "eslint src --ext .ts,.tsx"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
+    "react": ">=18.0.0 <20.0.0",
     "styled-components": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0 || ^19.0.0",
+    "@types/styled-components": "^5.1.26"
   },
   "publishConfig": { "access": "public" },
   "license": "MIT"
 }
 
-4. Create Design Tokens
+4. React Version Compatibility
+
+This design system supports both React 18 and React 19:
+
+- **React 18**: Full backward compatibility maintained
+- **React 19**: Full forward compatibility with new features
+- **Peer Dependencies**: Uses `>=18.0.0 <20.0.0` to support both versions
+- **TypeScript**: Supports both `@types/react@^18.2.0` and `@types/react@^19.0.0`
+
+The package uses modern React patterns (hooks, context, functional components) that work seamlessly across both versions.
+
+5. Create Design Tokens
 
 Example token files in src/tokens:
 

@@ -9,6 +9,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const StyledButton = styled.button<{
@@ -157,6 +158,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   type = "button",
   className,
+  style,
 }) => {
   return (
     <StyledButton
@@ -166,6 +168,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       type={type}
       className={className}
+      style={style}
       disabled={disabled}
     >
       {children}

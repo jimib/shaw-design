@@ -5,7 +5,7 @@ import { Button } from "../Button";
 interface NavMenuProps {
   children: React.ReactNode;
   className?: string;
-  variant?: "default" | "pills" | "underline";
+  variant?: "default" | "pills" | "underline" | "minimal";
   orientation?: "horizontal" | "vertical";
 }
 
@@ -32,32 +32,36 @@ const StyledNavMenu = styled.nav<{
   margin: 0;
   padding: 0;
 
-  ${({ $orientation }) => {
+  ${({ $orientation, theme }) => {
     switch ($orientation) {
       case "vertical":
         return `
           flex-direction: column;
-          gap: ${({ theme }) => theme.spacing.xs};
+          gap: ${theme.spacing.xs};
         `;
       default:
         return `
           flex-direction: row;
-          gap: ${({ theme }) => theme.spacing.sm};
+          gap: ${theme.spacing.sm};
         `;
     }
   }}
 
-  ${({ $variant }) => {
+  ${({ $variant, theme }) => {
     switch ($variant) {
       case "pills":
         return `
           background: hsl(var(--muted));
-          padding: ${({ theme }) => theme.spacing.xs};
+          padding: ${theme.spacing.xs};
           border-radius: 8px;
         `;
       case "underline":
         return `
           border-bottom: 1px solid hsl(var(--border));
+        `;
+      case "minimal":
+        return `
+          gap: ${theme.spacing.lg};
         `;
       default:
         return ``;

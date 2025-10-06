@@ -5,6 +5,7 @@ interface SeparatorProps {
   orientation?: "horizontal" | "vertical";
   className?: string;
   decorative?: boolean;
+  style?: React.CSSProperties;
 }
 
 const StyledSeparator = styled.hr<{
@@ -34,11 +35,13 @@ export const Separator: React.FC<SeparatorProps> = ({
   orientation = "horizontal",
   className,
   decorative = true,
+  style,
 }) => {
   return (
     <StyledSeparator
       $orientation={orientation}
       className={className}
+      style={style}
       role={decorative ? "none" : "separator"}
       aria-orientation={orientation}
     />
