@@ -7,7 +7,9 @@ A comprehensive design system package for Shaw Heritage micro-apps, providing sh
 - **Design Tokens**: Centralized colors, spacing, and typography
 - **Tailwind CSS Preset**: Easy integration with Tailwind projects
 - **Styled Components Theme**: React theming with TypeScript support
-- **Reusable Components**: Pre-built Button, Logo, Card, Input, and Label components
+- **Reusable Components**: Pre-built Button, Logo, Card, Input, Label, and Layout components
+- **Layout System**: Complete page layouts with Header, Sidebar, and Main content areas
+- **Navigation Components**: NavMenu and Menubar for building navigation interfaces
 - **Storybook Documentation**: Visual component library and design token showcase
 - **TypeScript Support**: Fully typed design system
 
@@ -79,29 +81,74 @@ import {
   CardTitle,
   Input,
   Label,
+  PageLayout,
+  Header,
+  Sidebar,
+  SidebarProvider,
+  SidebarHeader,
+  SidebarContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  NavMenu,
+  NavMenuItem,
 } from "@jimib/shaw-design";
 
 function MyComponent() {
   return (
-    <div>
-      <Logo variant="shaw" size={120} />
-      <Card variant="gradient">
-        <CardHeader>
-          <CardTitle>Welcome to Shaw Heritage</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="Enter your email" />
+    <SidebarProvider>
+      <PageLayout
+        showSidebar={true}
+        sidebar={
+          <Sidebar>
+            <SidebarHeader title="Shaw Heritage" showLogo={true} />
+            <SidebarContent>
+              <SidebarMenu>
+                <SidebarMenuItem active>
+                  <a href="#">Dashboard</a>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <a href="#">Collections</a>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarContent>
+          </Sidebar>
+        }
+        header={
+          <Header
+            title="Shaw Heritage CMS"
+            showLogo={true}
+            logoVariant="shaw"
+            actions={
+              <NavMenu variant="minimal">
+                <NavMenuItem>
+                  <a href="#">Dashboard</a>
+                </NavMenuItem>
+                <NavMenuItem>
+                  <a href="#">Settings</a>
+                </NavMenuItem>
+              </NavMenu>
+            }
+          />
+        }
+      >
+        <Card variant="gradient">
+          <CardHeader>
+            <CardTitle>Welcome to Shaw Heritage</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="email">Email</Label>
+                <Input id="email" type="email" placeholder="Enter your email" />
+              </div>
+              <Button variant="cms" size="lg">
+                Sign In
+              </Button>
             </div>
-            <Button variant="cms" size="lg">
-              Sign In
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          </CardContent>
+        </Card>
+      </PageLayout>
+    </SidebarProvider>
   );
 }
 ```
@@ -154,6 +201,69 @@ A styled label component for form inputs.
 **Props:**
 
 - All standard HTML label attributes
+
+### Layout Components
+
+#### PageLayout
+
+A comprehensive layout component that combines header, sidebar, and main content areas.
+
+**Props:**
+
+- `showSidebar`: boolean - Whether to show the sidebar
+- `sidebar`: React.ReactNode - Sidebar content
+- `header`: React.ReactNode - Header content
+- `mainVariant`: 'default' | 'centered' | 'full-width'
+- `containerSize`: 'sm' | 'md' | 'lg' | 'xl' | 'full'
+
+#### Header
+
+A flexible header component with logo, title, and actions support.
+
+**Props:**
+
+- `variant`: 'default' | 'minimal' | 'hero'
+- `showLogo`: boolean
+- `logoVariant`: 'dark' | 'light' | 'shaw'
+- `title`: string
+- `subtitle`: string
+- `actions`: React.ReactNode
+
+#### Sidebar
+
+A responsive sidebar component with mobile support and context management.
+
+**Props:**
+
+- `variant`: 'default' | 'floating' | 'inset'
+- `children`: React.ReactNode
+
+#### Navigation Components
+
+##### NavMenu
+
+A flexible navigation menu component with multiple variants.
+
+**Props:**
+
+- `variant`: 'default' | 'pills' | 'underline'
+- `orientation`: 'horizontal' | 'vertical'
+
+##### Menubar
+
+A horizontal menu bar component for application menus.
+
+**Props:**
+
+- `variant`: 'default' | 'minimal' | 'bordered'
+
+### Pre-built Layouts
+
+The design system includes several pre-built layout combinations:
+
+- `AuthLayout`: Centered layout for authentication pages
+- `DashboardLayout`: Full dashboard layout with sidebar and header
+- `ContentLayout`: Content-focused layout with header only
 
 ## 🎨 Design Tokens
 
