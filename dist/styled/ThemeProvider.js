@@ -1,3 +1,4 @@
+"use client";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import { colors, spacing, typography } from "../tokens";
