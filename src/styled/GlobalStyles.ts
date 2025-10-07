@@ -8,6 +8,12 @@ export const GlobalStyles = createGlobalStyle`
     --card-foreground: 312 15% 92%;
     --popover: 312 25% 12%;
     --popover-foreground: 312 15% 92%;
+    --success: 142 76% 36%;
+    --success-foreground: 312 15% 92%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 312 31% 8%;
+    --info: 213 94% 68%;
+    --info-foreground: 312 15% 92%;
     --primary: 320 65% 65%;
     --primary-foreground: 312 31% 8%;
     --secondary: 312 20% 18%;

@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useEffect,
 } from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 // Toast Types
 export interface Toast {
@@ -132,32 +132,32 @@ const ToastContainer = styled.div<{
   max-width: 400px;
   pointer-events: none;
 
-  ${({ $position }) => {
+  ${({ $position, theme }) => {
     switch ($position) {
       case "top-right":
-        return `
-          top: ${({ theme }) => theme.spacing.md};
-          right: ${({ theme }) => theme.spacing.md};
+        return css`
+          top: ${theme.spacing.md};
+          right: ${theme.spacing.md};
         `;
       case "top-left":
-        return `
-          top: ${({ theme }) => theme.spacing.md};
-          left: ${({ theme }) => theme.spacing.md};
+        return css`
+          top: ${theme.spacing.md};
+          left: ${theme.spacing.md};
         `;
       case "bottom-right":
-        return `
-          bottom: ${({ theme }) => theme.spacing.md};
-          right: ${({ theme }) => theme.spacing.md};
+        return css`
+          bottom: ${theme.spacing.md};
+          right: ${theme.spacing.md};
         `;
       case "bottom-left":
-        return `
-          bottom: ${({ theme }) => theme.spacing.md};
-          left: ${({ theme }) => theme.spacing.md};
+        return css`
+          bottom: ${theme.spacing.md};
+          left: ${theme.spacing.md};
         `;
       default:
-        return `
-          top: ${({ theme }) => theme.spacing.md};
-          right: ${({ theme }) => theme.spacing.md};
+        return css`
+          top: ${theme.spacing.md};
+          right: ${theme.spacing.md};
         `;
     }
   }}
@@ -216,24 +216,36 @@ const ToastItem = styled.div<{
       switch ($position) {
         case "top-right":
         case "bottom-right":
-          return `animation: ${slideOutRight} 0.3s ease-in-out forwards;`;
+          return css`
+            animation: ${slideOutRight} 0.3s ease-in-out forwards;
+          `;
         case "top-left":
         case "bottom-left":
-          return `animation: ${slideOutLeft} 0.3s ease-in-out forwards;`;
+          return css`
+            animation: ${slideOutLeft} 0.3s ease-in-out forwards;
+          `;
         default:
-          return `animation: ${slideOutRight} 0.3s ease-in-out forwards;`;
+          return css`
+            animation: ${slideOutRight} 0.3s ease-in-out forwards;
+          `;
       }
     }
 
     switch ($position) {
       case "top-right":
       case "bottom-right":
-        return `animation: ${slideInRight} 0.3s ease-in-out;`;
+        return css`
+          animation: ${slideInRight} 0.3s ease-in-out;
+        `;
       case "top-left":
       case "bottom-left":
-        return `animation: ${slideInLeft} 0.3s ease-in-out;`;
+        return css`
+          animation: ${slideInLeft} 0.3s ease-in-out;
+        `;
       default:
-        return `animation: ${slideInRight} 0.3s ease-in-out;`;
+        return css`
+          animation: ${slideInRight} 0.3s ease-in-out;
+        `;
     }
   }}
 `;
@@ -422,7 +434,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
 
 // Toast Renderer Component
 const ToastRenderer: React.FC = () => {
-  const { toasts } = useToast();
+  const { toasts, removeToast } = useToast();
 
   // Group toasts by position
   const toastsByPosition = toasts.reduce((acc, toast) => {
