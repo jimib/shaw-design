@@ -1,0 +1,18 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { Modal } from "./Modal";
+declare const meta: Meta<typeof Modal>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const Small: Story;
+export declare const Large: Story;
+export declare const ExtraLarge: Story;
+export declare const FullScreen: Story;
+export declare const SlideAnimation: Story;
+export declare const NoAnimation: Story;
+export declare const NoCloseButton: Story;
+export declare const NoOverlayClose: Story;
+export declare const NoEscapeClose: Story;
+export declare const FormExample: Story;
+export declare const AllSizes: Story;
+export declare const NewDesignShowcase: Story;

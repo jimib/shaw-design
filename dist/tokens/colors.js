@@ -1,5 +1,5 @@
 export const colors = {
-    // Shaw Heritage Design System Colors (from shaw-login-design)
+    // Shaw Heritage Design System Colors (updated to match designer reference)
     // Primary colors - Shaw Heritage Purple/Magenta theme
     primary: "hsl(320 65% 65%)", // Main brand color
     primaryHover: "hsl(320 65% 60%)",
@@ -37,7 +37,9 @@ export const colors = {
     border: "hsl(312 20% 20%)",
     input: "hsl(312 20% 15%)",
     ring: "hsl(320 65% 65%)",
-    // Sidebar colors
+    // Radius
+    radius: "0.5rem",
+    // Sidebar colors (light mode)
     sidebar: {
         background: "hsl(0 0% 98%)",
         foreground: "hsl(240 5.3% 26.1%)",
@@ -69,6 +71,17 @@ export const colors = {
         border: "hsl(217.2 32.6% 17.5%)",
         input: "hsl(217.2 32.6% 17.5%)",
         ring: "hsl(212.7 26.8% 83.9%)",
+        // Dark mode sidebar colors
+        sidebar: {
+            background: "hsl(240 5.9% 10%)",
+            foreground: "hsl(240 4.8% 95.9%)",
+            primary: "hsl(224.3 76.3% 48%)",
+            primaryForeground: "hsl(0 0% 100%)",
+            accent: "hsl(240 3.7% 15.9%)",
+            accentForeground: "hsl(240 4.8% 95.9%)",
+            border: "hsl(240 3.7% 15.9%)",
+            ring: "hsl(217.2 91.2% 59.8%)",
+        },
     },
     // Legacy colors (keeping for backward compatibility)
     white: "#FFFFFF",
@@ -94,20 +107,101 @@ export const colors = {
     errorHover: "#DC2626",
     info: "#3B82F6",
     infoHover: "#2563EB",
-    // Gradients (from shaw-login-design)
+    // Gradients (matching designer reference)
     gradients: {
         primary: "linear-gradient(135deg, hsl(320 65% 65%) 0%, hsl(330 55% 55%) 100%)",
-        card: "linear-gradient(145deg, hsl(312 25% 12%) 0%, hsl(312 30% 15%) 100%)",
+        card: "linear-gradient(145deg, hsl(var(--card)) 0%, hsl(312 30% 15%) 100%)",
         vintage: "linear-gradient(135deg, hsl(320 45% 25%) 0%, hsl(310 35% 15%) 50%, hsl(300 25% 8%) 100%)",
     },
-    // Shadows (from shaw-login-design)
+    // Shadows (matching designer reference)
     shadows: {
         elegant: "0 20px 25px -5px rgba(139, 69, 139, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2)",
         glow: "0 0 40px hsl(320 65% 65% / 0.2)",
     },
-    // Animation variables
+    // Animation variables (matching designer reference)
     transitions: {
         smooth: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         spring: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    },
+    // CSS Custom Properties (matching designer reference exactly)
+    cssVariables: {
+        light: {
+            "--background": "312 31% 8%",
+            "--foreground": "312 15% 92%",
+            "--card": "312 25% 12%",
+            "--card-foreground": "312 15% 92%",
+            "--popover": "312 25% 12%",
+            "--popover-foreground": "312 15% 92%",
+            "--primary": "320 65% 65%",
+            "--primary-foreground": "312 31% 8%",
+            "--secondary": "312 20% 18%",
+            "--secondary-foreground": "312 15% 92%",
+            "--muted": "312 20% 18%",
+            "--muted-foreground": "312 10% 65%",
+            "--accent": "320 65% 65%",
+            "--accent-foreground": "312 31% 8%",
+            "--destructive": "0 84% 60%",
+            "--destructive-foreground": "312 15% 92%",
+            "--success": "142 76% 36%",
+            "--success-foreground": "312 15% 92%",
+            "--warning": "38 92% 50%",
+            "--warning-foreground": "312 31% 8%",
+            "--info": "213 94% 68%",
+            "--info-foreground": "312 15% 92%",
+            "--border": "312 20% 20%",
+            "--input": "312 20% 15%",
+            "--ring": "320 65% 65%",
+            "--radius": "0.5rem",
+            "--gradient-primary": "linear-gradient(135deg, hsl(320 65% 65%) 0%, hsl(330 55% 55%) 100%)",
+            "--gradient-card": "linear-gradient(145deg, hsl(var(--card)) 0%, hsl(312 30% 15%) 100%)",
+            "--gradient-vintage": "linear-gradient(135deg, hsl(320 45% 25%) 0%, hsl(310 35% 15%) 50%, hsl(300 25% 8%) 100%)",
+            "--shadow-elegant": "0 20px 25px -5px rgba(139, 69, 139, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2)",
+            "--shadow-glow": "0 0 40px hsl(320 65% 65% / 0.2)",
+            "--transition-smooth": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            "--transition-spring": "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+            "--sidebar-background": "0 0% 98%",
+            "--sidebar-foreground": "240 5.3% 26.1%",
+            "--sidebar-primary": "240 5.9% 10%",
+            "--sidebar-primary-foreground": "0 0% 98%",
+            "--sidebar-accent": "240 4.8% 95.9%",
+            "--sidebar-accent-foreground": "240 5.9% 10%",
+            "--sidebar-border": "220 13% 91%",
+            "--sidebar-ring": "217.2 91.2% 59.8%",
+        },
+        dark: {
+            "--background": "222.2 84% 4.9%",
+            "--foreground": "210 40% 98%",
+            "--card": "222.2 84% 4.9%",
+            "--card-foreground": "210 40% 98%",
+            "--popover": "222.2 84% 4.9%",
+            "--popover-foreground": "210 40% 98%",
+            "--primary": "210 40% 98%",
+            "--primary-foreground": "222.2 47.4% 11.2%",
+            "--secondary": "217.2 32.6% 17.5%",
+            "--secondary-foreground": "210 40% 98%",
+            "--muted": "217.2 32.6% 17.5%",
+            "--muted-foreground": "215 20.2% 65.1%",
+            "--accent": "217.2 32.6% 17.5%",
+            "--accent-foreground": "210 40% 98%",
+            "--destructive": "0 62.8% 30.6%",
+            "--destructive-foreground": "210 40% 98%",
+            "--success": "142 76% 36%",
+            "--success-foreground": "210 40% 98%",
+            "--warning": "38 92% 50%",
+            "--warning-foreground": "222.2 47.4% 11.2%",
+            "--info": "213 94% 68%",
+            "--info-foreground": "210 40% 98%",
+            "--border": "217.2 32.6% 17.5%",
+            "--input": "217.2 32.6% 17.5%",
+            "--ring": "212.7 26.8% 83.9%",
+            "--sidebar-background": "240 5.9% 10%",
+            "--sidebar-foreground": "240 4.8% 95.9%",
+            "--sidebar-primary": "224.3 76.3% 48%",
+            "--sidebar-primary-foreground": "0 0% 100%",
+            "--sidebar-accent": "240 3.7% 15.9%",
+            "--sidebar-accent-foreground": "240 4.8% 95.9%",
+            "--sidebar-border": "240 3.7% 15.9%",
+            "--sidebar-ring": "217.2 91.2% 59.8%",
+        },
     },
 };

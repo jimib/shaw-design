@@ -1,0 +1,11 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { ToastProvider } from "./Toast";
+declare const meta: Meta<typeof ToastProvider>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const AllVariants: Story;
+export declare const AllPositions: Story;
+export declare const WithActions: Story;
+export declare const CustomDuration: Story;
+export declare const StackingExample: Story;
