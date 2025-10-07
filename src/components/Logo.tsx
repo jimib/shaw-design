@@ -24,6 +24,7 @@ export const Logo: React.FC<LogoProps> = ({
   className,
 }) => {
   const getLogoSrc = () => {
+    return `https://assets.myu.plus/shaw/assets/shaw-logo@1.0.0.png`;
     switch (variant) {
       case "shaw":
         return shawLogo;
