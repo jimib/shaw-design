@@ -43,7 +43,7 @@ export const colors = {
   destructiveForeground: "hsl(312 15% 92%)",
 
   // Border and input colors
-  border: "hsl(312 20% 20%)",
+  border: "hsl(var(--primary) / 0.9)",
   input: "hsl(312 20% 15%)",
   ring: "hsl(320 65% 65%)",
 

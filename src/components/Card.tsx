@@ -15,24 +15,25 @@ const StyledCard = styled.div<{ $variant: CardProps["variant"] }>`
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: ${({ theme }) => theme.colors.transitions.smooth};
+  backdrop-filter: blur(8px);
 
   ${({ $variant, theme }) => {
     switch ($variant) {
       case "gradient":
         return `
           background: ${theme.colors.gradients.card};
-          border: 1px solid ${theme.colors.border};
+          border: 2px solid ${theme.colors.border};
         `;
       case "vintage":
         return `
           background: ${theme.colors.gradients.vintage};
-          border: 1px solid ${theme.colors.border};
+          border: 2px solid ${theme.colors.border};
           box-shadow: ${theme.colors.shadows.elegant};
         `;
       default:
         return `
-          background: hsl(var(--card));
-          border: 1px solid hsl(var(--border));
+          background: rgba(0, 0, 0, 0.6);
+          border: 2px solid  ${theme.colors.border};
         `;
     }
   }}
