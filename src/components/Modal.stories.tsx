@@ -1,8 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { Modal } from "./Modal";
+import {
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalProps,
+  ModalTitle,
+} from "./Modal";
 import { Button } from "./Button";
-import { Card, CardHeader, CardTitle, CardContent } from "./Card";
+// import { Card, CardHeader, CardTitle, CardContent } from "./Card";
 
 const meta: Meta<typeof Modal> = {
   title: "Components/Modal",
@@ -63,23 +70,22 @@ const ModalExample = ({
         closeOnOverlayClick={closeOnOverlayClick}
         closeOnEscape={closeOnEscape}
       >
-        <Card variant="default">
-          <CardHeader>
-            <CardTitle>Modal Example</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p>This is a modal dialog example.</p>
-            <p>You can close it by:</p>
-            <ul>
-              <li>Clicking the X button (if enabled)</li>
-              <li>Clicking outside the modal (if enabled)</li>
-              <li>Pressing the Escape key (if enabled)</li>
-            </ul>
-            <div style={{ marginTop: "16px" }}>
-              <Button onClick={() => setIsOpen(false)}>Close Modal</Button>
-            </div>
-          </CardContent>
-        </Card>
+        <ModalHeader>
+          <ModalTitle>Modal Example</ModalTitle>{" "}
+        </ModalHeader>
+        <ModalBody>
+          <p>This is a modal dialog example.</p>
+          <p>You can close it by:</p>
+          <ul>
+            <li>Clicking the X button (if enabled)</li>
+            <li>Clicking outside the modal (if enabled)</li>
+            <li>Pressing the Escape key (if enabled)</li>
+          </ul>
+        </ModalBody>
+
+        <ModalFooter>
+          <Button onClick={() => setIsOpen(false)}>Close Modal</Button>
+        </ModalFooter>
       </Modal>
     </>
   );
@@ -134,79 +140,69 @@ export const FormExample: Story = {
       <>
         <Button onClick={() => setIsOpen(true)}>Open Form Modal</Button>
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} size="md">
-          <Card variant="default">
-            <CardHeader>
-              <CardTitle>Contact Form</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "16px",
-                }}
+          <ModalHeader>
+            <ModalTitle>Contact Form</ModalTitle>
+          </ModalHeader>
+          <ModalBody>
+            <div>
+              <label
+                htmlFor="name"
+                style={{ display: "block", marginBottom: "4px" }}
               >
-                <div>
-                  <label
-                    htmlFor="name"
-                    style={{ display: "block", marginBottom: "4px" }}
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    style={{
-                      width: "100%",
-                      padding: "8px 12px",
-                      border: "1px solid hsl(var(--border))",
-                      borderRadius: "6px",
-                      background: "hsl(var(--input))",
-                    }}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    style={{ display: "block", marginBottom: "4px" }}
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    style={{
-                      width: "100%",
-                      padding: "8px 12px",
-                      border: "1px solid hsl(var(--border))",
-                      borderRadius: "6px",
-                      background: "hsl(var(--input))",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "8px",
-                    justifyContent: "flex-end",
-                  }}
-                >
-                  <Button variant="outline" onClick={() => setIsOpen(false)}>
-                    Cancel
-                  </Button>
-                  <Button onClick={() => setIsOpen(false)}>Submit</Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                style={{
+                  width: "100%",
+                  padding: "8px 12px",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "6px",
+                  background: "hsl(var(--input))",
+                }}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                style={{ display: "block", marginBottom: "4px" }}
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                style={{
+                  width: "100%",
+                  padding: "8px 12px",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "6px",
+                  background: "hsl(var(--input))",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Button variant="outline" onClick={() => setIsOpen(false)}>
+                Cancel
+              </Button>
+              <Button onClick={() => setIsOpen(false)}>Submit</Button>
+            </div>
+          </ModalBody>
         </Modal>
       </>
     );
@@ -231,18 +227,74 @@ export const AllSizes: Story = {
             onClose={() => setOpenSize(null)}
             size={openSize}
           >
-            <Card variant="default">
-              <CardHeader>
-                <CardTitle>{openSize.toUpperCase()} Modal</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>This is a {openSize} sized modal.</p>
-                <Button onClick={() => setOpenSize(null)}>Close</Button>
-              </CardContent>
-            </Card>
+            <ModalHeader>
+              <ModalTitle>{openSize.toUpperCase()} Modal</ModalTitle>
+            </ModalHeader>
+            <ModalBody>
+              <p>This is a {openSize} sized modal.</p>
+            </ModalBody>
+            <ModalFooter>
+              <Button onClick={() => setOpenSize(null)}>Close</Button>
+            </ModalFooter>
           </Modal>
         )}
       </div>
+    );
+  },
+};
+
+export const NewDesignShowcase: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <>
+        <Button onClick={() => setIsOpen(true)}>Show New Design Modal</Button>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          size="lg"
+          animation="fade"
+        >
+          <h2
+            style={{
+              margin: "0 0 16px 0",
+              fontSize: "24px",
+              fontWeight: "600",
+              color: "hsl(var(--card-foreground))",
+            }}
+          >
+            New Modal Design
+          </h2>
+          <p
+            style={{
+              margin: "0 0 20px 0",
+              color: "hsl(var(--card-foreground))",
+              opacity: 0.8,
+            }}
+          >
+            This modal features the new design with:
+          </p>
+          <ul
+            style={{
+              margin: "0 0 20px 0",
+              paddingLeft: "20px",
+              color: "hsl(var(--card-foreground))",
+            }}
+          >
+            <li>Pink border with 30% opacity</li>
+            <li>Gradient card background with 90% opacity</li>
+            <li>Backdrop blur effect</li>
+            <li>Enhanced shadow styling</li>
+          </ul>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <Button onClick={() => setIsOpen(false)}>Close Modal</Button>
+            <Button variant="outline" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+          </div>
+        </Modal>
+      </>
     );
   },
 };

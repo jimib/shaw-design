@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
 
-interface ModalProps {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   size?: "sm" | "md" | "lg" | "xl" | "full";
@@ -22,7 +22,8 @@ const ModalOverlay = styled.div<{
 }>`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,14 +62,22 @@ const ModalContent = styled.div<{
   $isOpen: boolean;
   $animation: ModalProps["animation"];
 }>`
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
-  border-radius: 12px;
+  background: linear-gradient(
+    145deg,
+    hsl(var(--card)) 0%,
+    hsl(312 30% 15%) 100%
+  );
+  background-opacity: 0.9;
+  backdrop-filter: blur(16px);
+  border: 2px solid hsl(var(--primary) / 0.3);
+  border-radius: 16px;
   box-shadow: ${({ theme }) => theme.colors.shadows.elegant};
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
   width: 100%;
+  color: hsl(var(--card-foreground));
+  padding: ${({ theme }) => theme.spacing.md};
 
   ${({ $size }) => {
     switch ($size) {
@@ -105,6 +114,12 @@ const ModalContent = styled.div<{
       return `
         transform: scale(0.95);
         opacity: 0;
+    ${
+      $animation === "slide" &&
+      `
+        transform: translateY(100%);
+      `
+    }
       `;
     }
 
@@ -117,7 +132,7 @@ const ModalContent = styled.div<{
         `;
       case "slide":
         return `
-          transform: translateY(0);
+          transform: translateY(0px);
           opacity: 1;
           transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         `;
@@ -135,6 +150,14 @@ const CloseButton = styled(Button)`
   top: ${({ theme }) => theme.spacing.md};
   right: ${({ theme }) => theme.spacing.md};
   z-index: 1;
+  background: hsl(var(--primary) / 0.1);
+  border: 2px solid hsl(var(--primary) / 0.2);
+  color: hsl(var(--primary));
+
+  &:hover {
+    background: hsl(var(--primary) / 0.2);
+    border-color: hsl(var(--primary) / 0.3);
+  }
 `;
 
 export const Modal: React.FC<ModalProps> = ({
@@ -211,7 +234,7 @@ export const Modal: React.FC<ModalProps> = ({
     }
   };
 
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
 
   return (
     <ModalOverlay
@@ -227,17 +250,32 @@ export const Modal: React.FC<ModalProps> = ({
         $animation={animation}
         className={className}
       >
-        {showCloseButton && (
-          <CloseButton
-            variant="ghost"
-            onClick={onClose}
-            aria-label="Close modal"
-          >
-            ×
-          </CloseButton>
-        )}
-        {children}
+        {isOpen && children}
       </ModalContent>
     </ModalOverlay>
   );
 };
+
+export const ModalHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+`;
+
+export const ModalTitle = styled.h2`
+  font-size: ${({ theme }) => theme.typography.textStyles.h2.fontSize};
+  text-align: center;
+`;
+
+export const ModalBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md};
+`;
+
+export const ModalFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: ${({ theme }) => theme.spacing.md};
+`;
