@@ -23,6 +23,7 @@ const StyledSelect = styled.select<{
 }>`
   width: 100%;
   padding: ${({ theme }) => theme.spacing.input.padding.md};
+  padding-right: 40px; /* Add space for custom arrow */
   border-radius: 8px;
   font-family: ${({ theme }) => theme.typography.fontFamily.sans.join(", ")};
   font-size: ${({ theme }) => theme.typography.textStyles.body.fontSize};
@@ -33,6 +34,11 @@ const StyledSelect = styled.select<{
   border: 1px solid hsl(var(--border));
   color: hsl(var(--foreground));
   cursor: pointer;
+
+  /* Hide native select arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
   &:focus {
     border-color: hsl(var(--ring));
@@ -89,10 +95,17 @@ const SelectIcon = styled.div`
   transform: translateY(-50%);
   pointer-events: none;
   color: hsl(var(--muted-foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
 
   &::after {
     content: "▼";
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    transition: ${({ theme }) => theme.colors.transitions.smooth};
   }
 `;
 
