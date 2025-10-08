@@ -4,11 +4,15 @@ import styled from "styled-components";
 interface CardProps {
   children: React.ReactNode;
   variant?: "default" | "gradient" | "vintage";
+  onClick?: () => void;
   className?: string;
   style?: React.CSSProperties;
 }
 
-const StyledCard = styled.div<{ $variant: CardProps["variant"] }>`
+const StyledCard = styled.div<{
+  $variant: CardProps["variant"];
+  $clickable: boolean;
+}>`
   border-radius: 12px;
   padding: ${({ theme }) => theme.spacing.card.padding};
   margin: ${({ theme }) => theme.spacing.card.margin};
@@ -16,6 +20,7 @@ const StyledCard = styled.div<{ $variant: CardProps["variant"] }>`
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: ${({ theme }) => theme.colors.transitions.smooth};
   backdrop-filter: blur(8px);
+  cursor: ${({ $clickable }) => ($clickable ? "pointer" : "default")};
 
   ${({ $variant, theme }) => {
     switch ($variant) {
@@ -39,19 +44,32 @@ const StyledCard = styled.div<{ $variant: CardProps["variant"] }>`
   }}
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.colors.shadows.elegant};
+    transform: ${({ $clickable }) =>
+      $clickable ? "translateY(-2px)" : "none"};
+    box-shadow: ${({ theme, $clickable }) =>
+      $clickable
+        ? theme.colors.shadows.elegant
+        : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"};
   }
 `;
 
 export const Card: React.FC<CardProps> = ({
   children,
   variant = "default",
+  onClick,
   className,
   style,
 }) => {
+  const isClickable = !!onClick;
+
   return (
-    <StyledCard $variant={variant} className={className} style={style}>
+    <StyledCard
+      $variant={variant}
+      $clickable={isClickable}
+      onClick={onClick}
+      className={className}
+      style={style}
+    >
       {children}
     </StyledCard>
   );
