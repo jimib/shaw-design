@@ -2,6 +2,7 @@ import React from "react";
 interface CardProps {
     children: React.ReactNode;
     variant?: "default" | "gradient" | "vintage";
+    onClick?: () => void;
     className?: string;
     style?: React.CSSProperties;
 }

@@ -8,6 +8,7 @@ const StyledCard = styled.div `
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: ${({ theme }) => theme.colors.transitions.smooth};
   backdrop-filter: blur(8px);
+  cursor: ${({ $clickable }) => ($clickable ? "pointer" : "default")};
 
   ${({ $variant, theme }) => {
     switch ($variant) {
@@ -31,12 +32,15 @@ const StyledCard = styled.div `
 }}
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.colors.shadows.elegant};
+    transform: ${({ $clickable }) => $clickable ? "translateY(-2px)" : "none"};
+    box-shadow: ${({ theme, $clickable }) => $clickable
+    ? theme.colors.shadows.elegant
+    : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"};
   }
 `;
-export const Card = ({ children, variant = "default", className, style, }) => {
-    return (_jsx(StyledCard, { "$variant": variant, className: className, style: style, children: children }));
+export const Card = ({ children, variant = "default", onClick, className, style, }) => {
+    const isClickable = !!onClick;
+    return (_jsx(StyledCard, { "$variant": variant, "$clickable": isClickable, onClick: onClick, className: className, style: style, children: children }));
 };
 // Card sub-components
 export const CardHeader = styled.div `
