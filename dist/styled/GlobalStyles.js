@@ -1,7 +1,8 @@
 import { createGlobalStyle } from "styled-components";
-export const GlobalStyles = createGlobalStyle `
+export const GlobalStyles = createGlobalStyle`
   :root {
-    --background: 312 31% 8%;
+    // --background: 312 31% 8%;
+    --background: red url("https://assets.myu.plus/shaw/assets/bg@1.0.0.jpg") no-repeat center center fixed;
     --foreground: 312 15% 92%;
     --card: 312 25% 12%;
     --card-foreground: 312 15% 92%;
@@ -50,7 +51,7 @@ export const GlobalStyles = createGlobalStyle `
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    // --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -106,42 +107,48 @@ export const GlobalStyles = createGlobalStyle `
     font-size: ${({ theme }) => theme.typography.textStyles.h1.fontSize};
     font-weight: ${({ theme }) => theme.typography.textStyles.h1.fontWeight};
     line-height: ${({ theme }) => theme.typography.textStyles.h1.lineHeight};
-    letter-spacing: ${({ theme }) => theme.typography.textStyles.h1.letterSpacing};
+    letter-spacing: ${({ theme }) =>
+      theme.typography.textStyles.h1.letterSpacing};
   }
 
   h2 {
     font-size: ${({ theme }) => theme.typography.textStyles.h2.fontSize};
     font-weight: ${({ theme }) => theme.typography.textStyles.h2.fontWeight};
     line-height: ${({ theme }) => theme.typography.textStyles.h2.lineHeight};
-    letter-spacing: ${({ theme }) => theme.typography.textStyles.h2.letterSpacing};
+    letter-spacing: ${({ theme }) =>
+      theme.typography.textStyles.h2.letterSpacing};
   }
 
   h3 {
     font-size: ${({ theme }) => theme.typography.textStyles.h3.fontSize};
     font-weight: ${({ theme }) => theme.typography.textStyles.h3.fontWeight};
     line-height: ${({ theme }) => theme.typography.textStyles.h3.lineHeight};
-    letter-spacing: ${({ theme }) => theme.typography.textStyles.h3.letterSpacing};
+    letter-spacing: ${({ theme }) =>
+      theme.typography.textStyles.h3.letterSpacing};
   }
 
   h4 {
     font-size: ${({ theme }) => theme.typography.textStyles.h4.fontSize};
     font-weight: ${({ theme }) => theme.typography.textStyles.h4.fontWeight};
     line-height: ${({ theme }) => theme.typography.textStyles.h4.lineHeight};
-    letter-spacing: ${({ theme }) => theme.typography.textStyles.h4.letterSpacing};
+    letter-spacing: ${({ theme }) =>
+      theme.typography.textStyles.h4.letterSpacing};
   }
 
   h5 {
     font-size: ${({ theme }) => theme.typography.textStyles.h5.fontSize};
     font-weight: ${({ theme }) => theme.typography.textStyles.h5.fontWeight};
     line-height: ${({ theme }) => theme.typography.textStyles.h5.lineHeight};
-    letter-spacing: ${({ theme }) => theme.typography.textStyles.h5.letterSpacing};
+    letter-spacing: ${({ theme }) =>
+      theme.typography.textStyles.h5.letterSpacing};
   }
 
   h6 {
     font-size: ${({ theme }) => theme.typography.textStyles.h6.fontSize};
     font-weight: ${({ theme }) => theme.typography.textStyles.h6.fontWeight};
     line-height: ${({ theme }) => theme.typography.textStyles.h6.lineHeight};
-    letter-spacing: ${({ theme }) => theme.typography.textStyles.h6.letterSpacing};
+    letter-spacing: ${({ theme }) =>
+      theme.typography.textStyles.h6.letterSpacing};
   }
 
   p {
@@ -149,7 +156,8 @@ export const GlobalStyles = createGlobalStyle `
     font-size: ${({ theme }) => theme.typography.textStyles.body.fontSize};
     font-weight: ${({ theme }) => theme.typography.textStyles.body.fontWeight};
     line-height: ${({ theme }) => theme.typography.textStyles.body.lineHeight};
-    letter-spacing: ${({ theme }) => theme.typography.textStyles.body.letterSpacing};
+    letter-spacing: ${({ theme }) =>
+      theme.typography.textStyles.body.letterSpacing};
   }
 
   button {

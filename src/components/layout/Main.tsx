@@ -13,8 +13,9 @@ const StyledMain = styled.main<{
   $padding: MainProps["padding"];
 }>`
   flex: 1;
-  min-height: calc(100vh - 80px); // Adjust based on header height
-  background: hsl(var(--background));
+  // background: hsl(var(--background));
+  overflow-y: auto;
+  overflow-x: hidden;
 
   ${({ $variant, theme }) => {
     switch ($variant) {

@@ -264,3 +264,55 @@ export const ContentLayoutExample: Story = {
     </ContentLayout>
   ),
 };
+
+export const LongContentScrolling: Story = {
+  render: () => (
+    <DashboardLayout sidebar={sampleSidebar} header={sampleHeader}>
+      <div>
+        <h1>Long Content Test</h1>
+        <p>
+          This story tests scrolling behavior with long content. The sidebar
+          should stay fixed while the main content scrolls.
+        </p>
+
+        {Array.from({ length: 50 }, (_, i) => (
+          <Card key={i} style={{ marginBottom: "16px" }}>
+            <CardHeader>
+              <CardTitle>Card {i + 1}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>
+                This is card number {i + 1}. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.
+              </p>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+
+        <div
+          style={{
+            padding: "20px",
+            textAlign: "center",
+            background: "hsl(var(--muted))",
+            borderRadius: "8px",
+            marginTop: "20px",
+          }}
+        >
+          <p>
+            <strong>End of content</strong>
+          </p>
+          <p>If you can see this, scrolling is working correctly!</p>
+        </div>
+      </div>
+    </DashboardLayout>
+  ),
+};

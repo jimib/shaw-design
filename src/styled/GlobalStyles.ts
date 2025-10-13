@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
   :root {
     --background: 312 31% 8%;
+    --background-image: url("https://assets.myu.plus/shaw/assets/bg@1.0.0.jpg");
     --foreground: 312 15% 92%;
     --card: 312 25% 12%;
     --card-foreground: 312 15% 92%;
@@ -85,7 +86,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: hsl(var(--background));
+    background: hsl(var(--background)) var(--background-image) no-repeat center center fixed;
+    background-size: cover;
     color: hsl(var(--foreground));
     font-family: ${({ theme }) => theme.typography.fontFamily.sans.join(", ")};
     font-size: ${({ theme }) => theme.typography.fontSize.base};

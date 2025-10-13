@@ -24,8 +24,14 @@ interface PageLayoutProps {
 
 const LayoutWrapper = styled.div<{ $hasSidebar: boolean }>`
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   background: hsl(var(--background));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: var(--background-image);
+  overflow: hidden;
+  position: relative;
 
   ${({ $hasSidebar }) =>
     $hasSidebar &&
@@ -34,11 +40,18 @@ const LayoutWrapper = styled.div<{ $hasSidebar: boolean }>`
       .sidebar {
         width: 280px;
         flex-shrink: 0;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
       }
       
       .main-content {
         flex: 1;
-        margin-left: 0;
+        margin-left: 280px;
+        height: 100vh;
+        overflow: hidden;
       }
     }
   `}
@@ -48,7 +61,8 @@ const MainContent = styled.div<{ $hasSidebar: boolean }>`
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 
   ${({ $hasSidebar }) =>
     $hasSidebar &&
