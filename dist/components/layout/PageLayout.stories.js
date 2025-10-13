@@ -68,3 +68,12 @@ export const DashboardLayoutExample = {
 export const ContentLayoutExample = {
     render: () => (_jsx(ContentLayout, { header: sampleHeader, children: _jsxs("div", { children: [_jsx("h1", { children: "Content Page" }), _jsx("p", { children: "This is a content-focused layout with a header but no sidebar." }), _jsxs(Card, { children: [_jsx(CardHeader, { children: _jsx(CardTitle, { children: "Article Title" }) }), _jsxs(CardContent, { children: [_jsx("p", { children: "This is the main content of your article. It's designed to be readable and well-spaced." }), _jsx("p", { children: "You can include multiple paragraphs, images, and other content here." })] })] })] }) })),
 };
+export const LongContentScrolling = {
+    render: () => (_jsx(DashboardLayout, { sidebar: sampleSidebar, header: sampleHeader, children: _jsxs("div", { children: [_jsx("h1", { children: "Long Content Test" }), _jsx("p", { children: "This story tests scrolling behavior with long content. The sidebar should stay fixed while the main content scrolls." }), Array.from({ length: 50 }, (_, i) => (_jsxs(Card, { style: { marginBottom: "16px" }, children: [_jsx(CardHeader, { children: _jsxs(CardTitle, { children: ["Card ", i + 1] }) }), _jsxs(CardContent, { children: [_jsxs("p", { children: ["This is card number ", i + 1, ". Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."] }), _jsx("p", { children: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." })] })] }, i))), _jsxs("div", { style: {
+                        padding: "20px",
+                        textAlign: "center",
+                        background: "hsl(var(--muted))",
+                        borderRadius: "8px",
+                        marginTop: "20px",
+                    }, children: [_jsx("p", { children: _jsx("strong", { children: "End of content" }) }), _jsx("p", { children: "If you can see this, scrolling is working correctly!" })] })] }) })),
+};

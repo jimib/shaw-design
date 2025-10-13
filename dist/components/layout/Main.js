@@ -2,8 +2,9 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import styled from "styled-components";
 const StyledMain = styled.main `
   flex: 1;
-  min-height: calc(100vh - 80px); // Adjust based on header height
-  background: hsl(var(--background));
+  // background: hsl(var(--background));
+  overflow-y: auto;
+  overflow-x: hidden;
 
   ${({ $variant, theme }) => {
     switch ($variant) {

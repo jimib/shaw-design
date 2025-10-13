@@ -9,3 +9,4 @@ export declare const WithHeaderAndSidebar: Story;
 export declare const AuthLayoutExample: Story;
 export declare const DashboardLayoutExample: Story;
 export declare const ContentLayoutExample: Story;
+export declare const LongContentScrolling: Story;

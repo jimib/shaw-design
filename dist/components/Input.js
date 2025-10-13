@@ -22,7 +22,9 @@ const StyledInput = styled.input `
             box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
           }
           &::placeholder {
-            color: hsl(var(--muted-foreground));
+            // color: hsl(var(--muted-foreground));
+            // color: red;
+            color: white;
           }
         `;
         default:
@@ -35,7 +37,9 @@ const StyledInput = styled.input `
             box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
           }
           &::placeholder {
-            color: hsl(var(--muted-foreground));
+            // color: hsl(var(--muted-foreground));
+            // color: red;
+            color: white;
           }
           &:disabled {
             opacity: 0.5;

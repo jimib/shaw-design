@@ -4,7 +4,7 @@ import { Logo } from "../Logo";
 const StyledHeader = styled.header `
   width: 100%;
   padding: ${({ theme }) => theme.spacing.header.padding};
-  background: ${({ theme }) => theme.colors.background};
+  // background: ${({ theme }) => theme.colors.background};
   border-bottom: 1px solid hsl(var(--border));
   transition: ${({ theme }) => theme.colors.transitions.smooth};
 
@@ -18,13 +18,13 @@ const StyledHeader = styled.header `
         case "hero":
             return `
           padding: ${theme.spacing.xl} ${theme.spacing.md};
-          background: ${theme.colors.gradients.primary};
+          // background: ${theme.colors.gradients.primary};
           border-bottom: none;
           text-align: center;
         `;
         default:
             return `
-          background: hsl(var(--background));
+          // background: hsl(var(--background));
         `;
     }
 }}

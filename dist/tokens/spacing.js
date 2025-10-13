@@ -63,7 +63,7 @@ export const spacing = {
     },
     card: {
         padding: "24px",
-        margin: "16px",
+        margin: "16px 0px",
     },
     section: {
         padding: "48px 24px",

@@ -54,6 +54,8 @@ const StyledSidebar = styled.aside `
   transition: transform 0.3s ease-in-out;
   z-index: 50;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 
   ${({ $variant }) => {
     switch ($variant) {
@@ -75,7 +77,7 @@ const StyledSidebar = styled.aside `
 }}
 
   @media (min-width: 768px) {
-    position: relative;
+    position: fixed;
     transform: none;
     height: 100vh;
   }
