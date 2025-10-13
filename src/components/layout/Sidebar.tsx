@@ -326,8 +326,8 @@ const StyledSidebarMenuItem = styled.li<{ $active: boolean }>`
     ${({ $active }) =>
       $active &&
       `
-      background: hsl(var(--sidebar-accent));
-      color: hsl(var(--sidebar-accent-foreground));
+      // background: hsl(var(--sidebar-accent));
+      // color: hsl(var(--sidebar-accent-foreground));
       font-weight: 600;
     `}
   }
