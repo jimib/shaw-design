@@ -16,6 +16,9 @@ const meta = {
             control: { type: "select" },
             options: ["sm", "md", "lg"],
         },
+        compact: {
+            control: { type: "boolean" },
+        },
         disabled: {
             control: { type: "boolean" },
         },
@@ -85,6 +88,17 @@ export const Disabled = {
         size: "md",
         disabled: true,
     },
+};
+export const Compact = {
+    args: {
+        children: "Compact Button",
+        variant: "primary",
+        size: "md",
+        compact: true,
+    },
+};
+export const CompactComparison = {
+    render: () => (_jsxs("div", { className: "flex flex-col gap-4", children: [_jsxs("div", { className: "flex flex-wrap gap-4 items-center", children: [_jsx("span", { className: "text-sm text-gray-600", children: "Normal:" }), _jsx(Button, { variant: "primary", size: "sm", children: "Small" }), _jsx(Button, { variant: "primary", size: "md", children: "Medium" }), _jsx(Button, { variant: "primary", size: "lg", children: "Large" })] }), _jsxs("div", { className: "flex flex-wrap gap-4 items-center", children: [_jsx("span", { className: "text-sm text-gray-600", children: "Compact:" }), _jsx(Button, { variant: "primary", size: "sm", compact: true, children: "Small" }), _jsx(Button, { variant: "primary", size: "md", compact: true, children: "Medium" }), _jsx(Button, { variant: "primary", size: "lg", compact: true, children: "Large" })] })] })),
 };
 export const AllVariants = {
     render: () => (_jsxs("div", { className: "flex flex-wrap gap-4", children: [_jsx(Button, { variant: "primary", children: "Primary" }), _jsx(Button, { variant: "secondary", children: "Secondary" }), _jsx(Button, { variant: "accent", children: "Accent" }), _jsx(Button, { variant: "outline", children: "Outline" }), _jsx(Button, { variant: "ghost", children: "Ghost" }), _jsx(Button, { variant: "cms", children: "CMS" })] })),

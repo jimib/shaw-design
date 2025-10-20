@@ -14,23 +14,45 @@ const StyledButton = styled.button `
   outline: none;
 
   /* Size variants */
-  ${({ $size, theme }) => {
+  ${({ $size, $compact, theme }) => {
+    const getPadding = () => {
+        if ($compact) {
+            switch ($size) {
+                case "sm":
+                    return theme.spacing.button.padding.compact.sm;
+                case "lg":
+                    return theme.spacing.button.padding.compact.lg;
+                default: // md
+                    return theme.spacing.button.padding.compact.md;
+            }
+        }
+        else {
+            switch ($size) {
+                case "sm":
+                    return theme.spacing.button.padding.sm;
+                case "lg":
+                    return theme.spacing.button.padding.lg;
+                default: // md
+                    return theme.spacing.button.padding.md;
+            }
+        }
+    };
     switch ($size) {
         case "sm":
             return `
-          padding: ${theme.spacing.button.padding.sm};
+          padding: ${getPadding()};
           font-size: ${theme.typography.textStyles.buttonSmall.fontSize};
           line-height: ${theme.typography.textStyles.buttonSmall.lineHeight};
         `;
         case "lg":
             return `
-          padding: ${theme.spacing.button.padding.lg};
+          padding: ${getPadding()};
           font-size: ${theme.typography.textStyles.button.fontSize};
           line-height: ${theme.typography.textStyles.button.lineHeight};
         `;
         default: // md
             return `
-          padding: ${theme.spacing.button.padding.md};
+          padding: ${getPadding()};
           font-size: ${theme.typography.textStyles.button.fontSize};
           line-height: ${theme.typography.textStyles.button.lineHeight};
         `;
@@ -132,6 +154,6 @@ const StyledButton = styled.button `
     }
 }}
 `;
-export const Button = ({ children, variant = "primary", size = "md", disabled = false, onClick, type = "button", className, style, }) => {
-    return (_jsx(StyledButton, { "$variant": variant, "$size": size, "$disabled": disabled, onClick: onClick, type: type, className: className, style: style, disabled: disabled, children: children }));
+export const Button = ({ children, variant = "primary", size = "md", compact = false, disabled = false, onClick, type = "button", className, style, }) => {
+    return (_jsx(StyledButton, { "$variant": variant, "$size": size, "$compact": compact, "$disabled": disabled, onClick: onClick, type: type, className: className, style: style, disabled: disabled, children: children }));
 };

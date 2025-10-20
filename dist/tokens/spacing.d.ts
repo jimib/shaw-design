@@ -49,6 +49,11 @@ export declare const spacing: {
             sm: string;
             md: string;
             lg: string;
+            compact: {
+                sm: string;
+                md: string;
+                lg: string;
+            };
         };
     };
     input: {

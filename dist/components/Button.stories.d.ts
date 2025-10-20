@@ -12,4 +12,6 @@ export declare const CMS: Story;
 export declare const Small: Story;
 export declare const Large: Story;
 export declare const Disabled: Story;
+export declare const Compact: Story;
+export declare const CompactComparison: Story;
 export declare const AllVariants: Story;

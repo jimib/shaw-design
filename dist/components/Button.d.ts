@@ -3,6 +3,7 @@ interface ButtonProps {
     children: React.ReactNode;
     variant?: "primary" | "secondary" | "accent" | "outline" | "ghost" | "cms";
     size?: "sm" | "md" | "lg";
+    compact?: boolean;
     disabled?: boolean;
     onClick?: () => void;
     type?: "button" | "submit" | "reset";

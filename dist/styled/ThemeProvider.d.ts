@@ -243,6 +243,11 @@ export declare const theme: {
                 sm: string;
                 md: string;
                 lg: string;
+                compact: {
+                    sm: string;
+                    md: string;
+                    lg: string;
+                };
             };
         };
         input: {
