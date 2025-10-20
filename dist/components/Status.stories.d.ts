@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import { Status, StatusProps } from "./Status";
+declare const meta: Meta<StatusProps>;
+export default meta;
+type Story = StoryObj<typeof Status>;
+export declare const SolidGreen: Story;
+export declare const SolidOrange: Story;
+export declare const SolidRed: Story;
+export declare const OutlineGreen: Story;
+export declare const OutlineOrange: Story;
+export declare const OutlineRed: Story;
+export declare const Sizes: React.FC;

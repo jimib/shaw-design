@@ -11,6 +11,7 @@ export * from "./Radio";
 export * from "./Select";
 export * from "./Progress";
 export * from "./Toast";
+export * from "./Status";
 
 // Layout components
 export * from "./layout";

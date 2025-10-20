@@ -101,12 +101,16 @@ export const colors = {
     // Semantic colors
     success: "#10B981",
     successHover: "#059669",
+    successForeground: "#10B981",
     warning: "#F59E0B",
     warningHover: "#D97706",
+    warningForeground: "#F59E0B",
     error: "#EF4444",
     errorHover: "#DC2626",
+    errorForeground: "#EF4444",
     info: "#3B82F6",
     infoHover: "#2563EB",
+    infoForeground: "#3B82F6",
     // Gradients (matching designer reference)
     gradients: {
         primary: "linear-gradient(135deg, hsl(320 65% 65%) 0%, hsl(330 55% 55%) 100%)",

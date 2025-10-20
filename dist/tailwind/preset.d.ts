@@ -88,12 +88,16 @@ export namespace theme {
             };
             success: string;
             successHover: string;
+            successForeground: string;
             warning: string;
             warningHover: string;
+            warningForeground: string;
             error: string;
             errorHover: string;
+            errorForeground: string;
             info: string;
             infoHover: string;
+            infoForeground: string;
             gradients: {
                 primary: string;
                 card: string;
