@@ -54,6 +54,11 @@ export const spacing = {
       sm: "8px 16px",
       md: "12px 24px",
       lg: "16px 32px",
+      compact: {
+        sm: "4px 8px",
+        md: "6px 12px",
+        lg: "8px 16px",
+      },
     },
   },
 

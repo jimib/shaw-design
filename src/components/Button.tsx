@@ -5,6 +5,7 @@ interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "accent" | "outline" | "ghost" | "cms";
   size?: "sm" | "md" | "lg";
+  compact?: boolean;
   disabled?: boolean;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
@@ -15,6 +16,7 @@ interface ButtonProps {
 const StyledButton = styled.button<{
   $variant: ButtonProps["variant"];
   $size: ButtonProps["size"];
+  $compact: boolean;
   $disabled: boolean;
 }>`
   display: inline-flex;
@@ -30,23 +32,45 @@ const StyledButton = styled.button<{
   outline: none;
 
   /* Size variants */
-  ${({ $size, theme }) => {
+  ${({ $size, $compact, theme }) => {
+    const getPadding = () => {
+      if ($compact) {
+        switch ($size) {
+          case "sm":
+            return theme.spacing.button.padding.compact.sm;
+          case "lg":
+            return theme.spacing.button.padding.compact.lg;
+          default: // md
+            return theme.spacing.button.padding.compact.md;
+        }
+      } else {
+        switch ($size) {
+          case "sm":
+            return theme.spacing.button.padding.sm;
+          case "lg":
+            return theme.spacing.button.padding.lg;
+          default: // md
+            return theme.spacing.button.padding.md;
+        }
+      }
+    };
+
     switch ($size) {
       case "sm":
         return `
-          padding: ${theme.spacing.button.padding.sm};
+          padding: ${getPadding()};
           font-size: ${theme.typography.textStyles.buttonSmall.fontSize};
           line-height: ${theme.typography.textStyles.buttonSmall.lineHeight};
         `;
       case "lg":
         return `
-          padding: ${theme.spacing.button.padding.lg};
+          padding: ${getPadding()};
           font-size: ${theme.typography.textStyles.button.fontSize};
           line-height: ${theme.typography.textStyles.button.lineHeight};
         `;
       default: // md
         return `
-          padding: ${theme.spacing.button.padding.md};
+          padding: ${getPadding()};
           font-size: ${theme.typography.textStyles.button.fontSize};
           line-height: ${theme.typography.textStyles.button.lineHeight};
         `;
@@ -154,6 +178,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   variant = "primary",
   size = "md",
+  compact = false,
   disabled = false,
   onClick,
   type = "button",
@@ -164,6 +189,7 @@ export const Button: React.FC<ButtonProps> = ({
     <StyledButton
       $variant={variant}
       $size={size}
+      $compact={compact}
       $disabled={disabled}
       onClick={onClick}
       type={type}

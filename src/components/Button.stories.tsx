@@ -17,6 +17,9 @@ const meta: Meta<typeof Button> = {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
     },
+    compact: {
+      control: { type: "boolean" },
+    },
     disabled: {
       control: { type: "boolean" },
     },
@@ -97,6 +100,46 @@ export const Disabled: Story = {
     size: "md",
     disabled: true,
   },
+};
+
+export const Compact: Story = {
+  args: {
+    children: "Compact Button",
+    variant: "primary",
+    size: "md",
+    compact: true,
+  },
+};
+
+export const CompactComparison: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap gap-4 items-center">
+        <span className="text-sm text-gray-600">Normal:</span>
+        <Button variant="primary" size="sm">
+          Small
+        </Button>
+        <Button variant="primary" size="md">
+          Medium
+        </Button>
+        <Button variant="primary" size="lg">
+          Large
+        </Button>
+      </div>
+      <div className="flex flex-wrap gap-4 items-center">
+        <span className="text-sm text-gray-600">Compact:</span>
+        <Button variant="primary" size="sm" compact>
+          Small
+        </Button>
+        <Button variant="primary" size="md" compact>
+          Medium
+        </Button>
+        <Button variant="primary" size="lg" compact>
+          Large
+        </Button>
+      </div>
+    </div>
+  ),
 };
 
 export const AllVariants: Story = {
