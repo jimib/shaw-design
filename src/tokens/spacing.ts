@@ -84,7 +84,7 @@ export const spacing = {
   },
 
   header: {
-    padding: "12px 24px",
+    padding: "20px 24px",
     margin: "8px 0",
   },
 };
