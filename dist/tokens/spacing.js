@@ -67,7 +67,10 @@ export const spacing = {
         },
     },
     card: {
-        padding: "24px",
+        padding: {
+            default: "24px",
+            compact: "12px",
+        },
         margin: "16px 0px",
     },
     section: {
@@ -75,7 +78,7 @@ export const spacing = {
         margin: "32px 0",
     },
     header: {
-        padding: "48px 24px",
-        margin: "32px 0",
+        padding: "12px 24px",
+        margin: "8px 0",
     },
 };

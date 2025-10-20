@@ -2,7 +2,9 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import styled from "styled-components";
 const StyledCard = styled.div `
   border-radius: 12px;
-  padding: ${({ theme }) => theme.spacing.card.padding};
+  padding: ${({ $compact, theme }) => $compact
+    ? theme.spacing.card.padding.compact
+    : theme.spacing.card.padding.default};
   margin: ${({ theme }) => theme.spacing.card.margin};
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -38,9 +40,9 @@ const StyledCard = styled.div `
     : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"};
   }
 `;
-export const Card = ({ children, variant = "default", onClick, className, style, }) => {
+export const Card = ({ children, variant = "default", compact = false, onClick, className, style, }) => {
     const isClickable = !!onClick;
-    return (_jsx(StyledCard, { "$variant": variant, "$clickable": isClickable, onClick: onClick, className: className, style: style, children: children }));
+    return (_jsx(StyledCard, { "$variant": variant, "$compact": compact, "$clickable": isClickable, onClick: onClick, className: className, style: style, children: children }));
 };
 // Card sub-components
 export const CardHeader = styled.div `

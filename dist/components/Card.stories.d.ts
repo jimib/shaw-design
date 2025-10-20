@@ -6,4 +6,6 @@ type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
 export declare const Gradient: Story;
 export declare const Vintage: Story;
+export declare const Compact: Story;
+export declare const CompactComparison: Story;
 export declare const AllVariants: Story;

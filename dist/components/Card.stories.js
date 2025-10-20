@@ -12,6 +12,9 @@ const meta = {
             control: { type: "select" },
             options: ["default", "gradient", "vintage"],
         },
+        compact: {
+            control: { type: "boolean" },
+        },
     },
 };
 export default meta;
@@ -32,6 +35,16 @@ export const Vintage = {
         children: (_jsxs(_Fragment, { children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Vintage Card" }), _jsx(CardDescription, { children: "This card uses the vintage gradient with elegant shadows." })] }), _jsx(CardContent, { children: _jsx("p", { children: "This card features the vintage gradient background with enhanced shadow effects for a more premium look." }) })] })),
         variant: "vintage",
     },
+};
+export const Compact = {
+    args: {
+        children: (_jsxs(_Fragment, { children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Compact Card" }), _jsx(CardDescription, { children: "This card has reduced padding for a more compact layout." })] }), _jsx(CardContent, { children: _jsx("p", { children: "Perfect for dense layouts where you need to fit more content in less space." }) })] })),
+        variant: "default",
+        compact: true,
+    },
+};
+export const CompactComparison = {
+    render: () => (_jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl", children: [_jsxs(Card, { variant: "default", children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Normal Card" }), _jsx(CardDescription, { children: "Standard padding" })] }), _jsx(CardContent, { children: _jsx("p", { children: "This card uses the default padding of 24px." }) })] }), _jsxs(Card, { variant: "default", compact: true, children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Compact Card" }), _jsx(CardDescription, { children: "Reduced padding" })] }), _jsx(CardContent, { children: _jsx("p", { children: "This card uses compact padding of 12px." }) })] })] })),
 };
 export const AllVariants = {
     render: () => (_jsxs("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl", children: [_jsxs(Card, { variant: "default", children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Default" }), _jsx(CardDescription, { children: "Basic card styling" })] }), _jsx(CardContent, { children: _jsx("p", { children: "Standard card with clean design." }) })] }), _jsxs(Card, { variant: "gradient", children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Gradient" }), _jsx(CardDescription, { children: "Shaw Heritage gradient" })] }), _jsx(CardContent, { children: _jsx("p", { children: "Card with gradient background." }) })] }), _jsxs(Card, { variant: "vintage", children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Vintage" }), _jsx(CardDescription, { children: "Premium vintage styling" })] }), _jsx(CardContent, { children: _jsx("p", { children: "Card with vintage gradient and shadows." }) })] })] })),

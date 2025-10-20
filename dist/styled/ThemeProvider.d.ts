@@ -258,7 +258,10 @@ export declare const theme: {
             };
         };
         card: {
-            padding: string;
+            padding: {
+                default: string;
+                compact: string;
+            };
             margin: string;
         };
         section: {
