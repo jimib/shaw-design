@@ -4,6 +4,7 @@ import styled from "styled-components";
 interface CardProps {
   children: React.ReactNode;
   variant?: "default" | "gradient" | "vintage";
+  compact?: boolean;
   onClick?: () => void;
   className?: string;
   style?: React.CSSProperties;
@@ -11,10 +12,14 @@ interface CardProps {
 
 const StyledCard = styled.div<{
   $variant: CardProps["variant"];
+  $compact: boolean;
   $clickable: boolean;
 }>`
   border-radius: 12px;
-  padding: ${({ theme }) => theme.spacing.card.padding};
+  padding: ${({ $compact, theme }) =>
+    $compact
+      ? theme.spacing.card.padding.compact
+      : theme.spacing.card.padding.default};
   margin: ${({ theme }) => theme.spacing.card.margin};
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -56,6 +61,7 @@ const StyledCard = styled.div<{
 export const Card: React.FC<CardProps> = ({
   children,
   variant = "default",
+  compact = false,
   onClick,
   className,
   style,
@@ -65,6 +71,7 @@ export const Card: React.FC<CardProps> = ({
   return (
     <StyledCard
       $variant={variant}
+      $compact={compact}
       $clickable={isClickable}
       onClick={onClick}
       className={className}

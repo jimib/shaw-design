@@ -19,6 +19,9 @@ const meta: Meta<typeof Card> = {
       control: { type: "select" },
       options: ["default", "gradient", "vintage"],
     },
+    compact: {
+      control: { type: "boolean" },
+    },
   },
 };
 
@@ -89,6 +92,55 @@ export const Vintage: Story = {
     ),
     variant: "vintage",
   },
+};
+
+export const Compact: Story = {
+  args: {
+    children: (
+      <>
+        <CardHeader>
+          <CardTitle>Compact Card</CardTitle>
+          <CardDescription>
+            This card has reduced padding for a more compact layout.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>
+            Perfect for dense layouts where you need to fit more content in less
+            space.
+          </p>
+        </CardContent>
+      </>
+    ),
+    variant: "default",
+    compact: true,
+  },
+};
+
+export const CompactComparison: Story = {
+  render: () => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+      <Card variant="default">
+        <CardHeader>
+          <CardTitle>Normal Card</CardTitle>
+          <CardDescription>Standard padding</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>This card uses the default padding of 24px.</p>
+        </CardContent>
+      </Card>
+
+      <Card variant="default" compact>
+        <CardHeader>
+          <CardTitle>Compact Card</CardTitle>
+          <CardDescription>Reduced padding</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>This card uses compact padding of 12px.</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
 };
 
 export const AllVariants: Story = {
