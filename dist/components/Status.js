@@ -38,6 +38,7 @@ const StyledStatus = styled.div `
         return `
         background: transparent;
         color: ${c.base};
+        stroke: ${c.base};
         border: 2px solid ${c.base};
         &:hover { border-color: ${c.hover}; color: ${c.hover}; }
       `;
@@ -45,7 +46,8 @@ const StyledStatus = styled.div `
     // solid
     return `
       background: ${c.base};
-      color: ${c.fg};
+      color: ${theme.colors.white};
+      stroke: ${theme.colors.white};
       border: none;
       &:hover { background: ${c.hover}; }
       box-shadow: 0 0 0 3px ${c.base}20;
