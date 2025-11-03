@@ -1,5 +1,5 @@
 import React from "react";
-type StatusValue = "green" | "orange" | "red";
+type StatusValue = "green" | "orange" | "red" | "gray";
 type StatusVariant = "solid" | "outline";
 export interface StatusProps {
     value: StatusValue;

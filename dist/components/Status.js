@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import styled from "styled-components";
-import { Check, AlertTriangle, X } from "lucide-react";
+import { Check, AlertTriangle, X, Circle } from "lucide-react";
 const sizeMap = {
     sm: 24,
     md: 32,
@@ -32,6 +32,11 @@ const StyledStatus = styled.div `
             hover: theme.colors.errorHover,
             fg: theme.colors.destructiveForeground,
         },
+        gray: {
+            base: theme.colors.gray[500],
+            hover: theme.colors.gray[600],
+            fg: theme.colors.white,
+        },
     };
     const c = colorByValue[$value];
     if ($variant === "outline") {
@@ -62,6 +67,8 @@ const iconForValue = (value) => {
             return AlertTriangle;
         case "red":
             return X;
+        case "gray":
+            return Circle;
         default:
             return Check;
     }

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Check, AlertTriangle, X } from "lucide-react";
+import { Check, AlertTriangle, X, Circle, Trash } from "lucide-react";
 
-type StatusValue = "green" | "orange" | "red";
+type StatusValue = "green" | "orange" | "red" | "gray";
 type StatusVariant = "solid" | "outline";
 
 export interface StatusProps {
@@ -50,6 +50,11 @@ const StyledStatus = styled.div<{
         hover: theme.colors.errorHover,
         fg: theme.colors.destructiveForeground,
       },
+      gray: {
+        base: theme.colors.gray[500],
+        hover: theme.colors.gray[600],
+        fg: theme.colors.white,
+      },
     } as const;
 
     const c = colorByValue[$value];
@@ -84,6 +89,8 @@ const iconForValue = (value: StatusValue) => {
       return AlertTriangle;
     case "red":
       return X;
+    case "gray":
+      return Trash;
     default:
       return Check;
   }

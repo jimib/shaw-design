@@ -11,7 +11,7 @@ const meta = {
     argTypes: {
         value: {
             control: { type: "inline-radio" },
-            options: ["green", "orange", "red"],
+            options: ["green", "orange", "red", "gray"],
         },
         variant: {
             control: { type: "inline-radio" },
@@ -29,6 +29,7 @@ export const SolidOrange = {
     args: { value: "orange", variant: "solid" },
 };
 export const SolidRed = { args: { value: "red", variant: "solid" } };
+export const SolidGray = { args: { value: "gray", variant: "solid" } };
 export const OutlineGreen = {
     args: { value: "green", variant: "outline" },
 };
@@ -36,4 +37,7 @@ export const OutlineOrange = {
     args: { value: "orange", variant: "outline" },
 };
 export const OutlineRed = { args: { value: "red", variant: "outline" } };
+export const OutlineGray = {
+    args: { value: "gray", variant: "outline" },
+};
 export const Sizes = () => (_jsxs("div", { style: { display: "flex", gap: 12, alignItems: "center" }, children: [_jsx(Status, { value: "green", size: "sm" }), _jsx(Status, { value: "green", size: "md" }), _jsx(Status, { value: "green", size: "lg" })] }));
