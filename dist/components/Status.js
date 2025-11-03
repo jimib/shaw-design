@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import styled from "styled-components";
-import { Check, AlertTriangle, X, Circle } from "lucide-react";
+import { Check, AlertTriangle, X, Trash } from "lucide-react";
 const sizeMap = {
     sm: 24,
     md: 32,
@@ -68,7 +68,7 @@ const iconForValue = (value) => {
         case "red":
             return X;
         case "gray":
-            return Circle;
+            return Trash;
         default:
             return Check;
     }
