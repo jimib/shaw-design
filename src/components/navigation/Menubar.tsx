@@ -122,3 +122,4 @@ export const MenubarSeparator: React.FC<MenubarSeparatorProps> = ({
 }) => {
   return <StyledMenubarSeparator className={className} />;
 };
+

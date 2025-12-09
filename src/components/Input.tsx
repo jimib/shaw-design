@@ -62,3 +62,4 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   return <StyledInput $variant={variant} className={className} {...props} />;
 };
+

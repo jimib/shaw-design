@@ -344,3 +344,4 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
     </StyledSidebarMenuItem>
   );
 };
+

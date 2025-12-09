@@ -67,3 +67,4 @@ export const Main: React.FC<MainProps> = ({
     </StyledMain>
   );
 };
+

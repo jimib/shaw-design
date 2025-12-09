@@ -442,3 +442,4 @@ export const AuthLayoutExample: React.FC = () => {
     </PageLayout>
   );
 };
+

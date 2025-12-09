@@ -47,3 +47,4 @@ export const Separator: React.FC<SeparatorProps> = ({
     />
   );
 };
+

@@ -182,3 +182,4 @@ export const NavMenuTrigger: React.FC<NavMenuTriggerProps> = ({
     </StyledNavMenuTrigger>
   );
 };
+

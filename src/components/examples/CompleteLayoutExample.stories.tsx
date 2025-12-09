@@ -23,3 +23,4 @@ export const Dashboard: Story = {
 export const Auth: Story = {
   render: () => <AuthLayoutExample />,
 };
+
