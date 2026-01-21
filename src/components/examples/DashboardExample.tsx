@@ -1,7 +1,6 @@
 import React from "react";
 import {
   PageLayout,
-  Header,
   Sidebar,
   SidebarProvider,
   SidebarHeader,
@@ -191,22 +190,6 @@ const ExampleSidebar = (
   </>
 );
 
-const ExampleHeader = (
-  <Header
-    title="Dashboard"
-    showLogo={false}
-    actions={
-      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-        <Button variant="outline" size="sm">
-          Settings
-        </Button>
-        <Button variant="cms" size="sm">
-          Profile
-        </Button>
-      </div>
-    }
-  />
-);
 
 export const DashboardExample: React.FC = () => {
   return (
@@ -214,7 +197,6 @@ export const DashboardExample: React.FC = () => {
       <PageLayout
         showSidebar={true}
         sidebar={ExampleSidebar}
-        header={ExampleHeader}
         containerSize="full"
       >
         <div style={{ padding: "24px" }}>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   PageLayout,
-  Header,
   Sidebar,
   SidebarProvider,
   SidebarHeader,
@@ -90,22 +89,6 @@ const ExampleSidebar = (
   </>
 );
 
-const ExampleHeader = (
-  <Header
-    title="Content Library"
-    showLogo={false}
-    actions={
-      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-        <Button variant="outline" size="sm">
-          Settings
-        </Button>
-        <Button variant="cms" size="sm">
-          Profile
-        </Button>
-      </div>
-    }
-  />
-);
 
 export const TableSearchExample: React.FC = () => {
   const [search, setSearch] = useState("");
@@ -116,7 +99,6 @@ export const TableSearchExample: React.FC = () => {
       <PageLayout
         showSidebar={true}
         sidebar={ExampleSidebar}
-        header={ExampleHeader}
         containerSize="full"
       >
         <div style={{ padding: "24px" }}>

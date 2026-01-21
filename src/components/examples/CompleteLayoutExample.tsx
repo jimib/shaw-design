@@ -1,7 +1,6 @@
 import React from "react";
 import {
   PageLayout,
-  Header,
   Sidebar,
   SidebarProvider,
   SidebarHeader,
@@ -98,38 +97,6 @@ const ExampleSidebar = (
   </>
 );
 
-// Example header content
-const ExampleHeader = (
-  <Header
-    title="Shaw Heritage CMS"
-    showLogo={true}
-    logoVariant="shaw"
-    actions={
-      <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-        <NavMenu variant="minimal">
-          <NavMenuItem>
-            <a href="#">Dashboard</a>
-          </NavMenuItem>
-          <NavMenuItem>
-            <a href="#">Collections</a>
-          </NavMenuItem>
-          <NavMenuItem>
-            <a href="#">Media</a>
-          </NavMenuItem>
-        </NavMenu>
-
-        <Separator orientation="vertical" style={{ height: "20px" }} />
-
-        <Button variant="outline" size="sm">
-          Settings
-        </Button>
-        <Button variant="cms" size="sm">
-          Profile
-        </Button>
-      </div>
-    }
-  />
-);
 
 // Example main content
 const ExampleContent = (
@@ -332,7 +299,6 @@ export const CompleteLayoutExample: React.FC = () => {
       <PageLayout
         showSidebar={true}
         sidebar={ExampleSidebar}
-        header={ExampleHeader}
         containerSize="full"
       >
         {ExampleContent}
