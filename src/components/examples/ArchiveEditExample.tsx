@@ -3,51 +3,13 @@ import {
   PageLayout,
   Sidebar,
   SidebarProvider,
-  SidebarHeader,
-  SidebarContent,
-  SidebarFooter,
-  SidebarMenu,
-  SidebarMenuItem,
   Main,
   Container,
 } from "../layout";
 import { Button, Card, CardContent, CardTitle, SearchBar, ContentTable, Separator } from "../";
 import { Search, Filter, Calendar, Tag, Globe, FileText } from "lucide-react";
 import styled from "styled-components";
-
-const ExampleSidebar = (
-  <>
-    <SidebarHeader title="Shaw Heritage" showLogo={true} />
-    <SidebarContent>
-      <div style={{ marginBottom: "16px" }}>
-        <h4
-          style={{
-            margin: "0 0 8px 0",
-            fontSize: "12px",
-            fontWeight: 600,
-            color: "hsl(var(--muted-foreground))",
-            textTransform: "uppercase",
-          }}
-        >
-          Archive
-        </h4>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <a href="#">Upload</a>
-          </SidebarMenuItem>
-          <SidebarMenuItem active>
-            <a href="#">Library</a>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </div>
-    </SidebarContent>
-    <SidebarFooter>
-      <Button variant="ghost" size="sm" style={{ width: "100%" }}>
-        Logout
-      </Button>
-    </SidebarFooter>
-  </>
-);
+import { ExampleSidebar } from "./ExampleSidebar";
 
 
 const SearchSection = styled(Card)`
@@ -117,7 +79,7 @@ export const ArchiveEditExample: React.FC = () => {
     <SidebarProvider>
       <PageLayout
         showSidebar={true}
-        sidebar={ExampleSidebar}
+        sidebar={<ExampleSidebar activePath="#" />}
         containerSize="full"
       >
         <div style={{ padding: "40px" }}>

@@ -3,11 +3,6 @@ import {
   PageLayout,
   Sidebar,
   SidebarProvider,
-  SidebarHeader,
-  SidebarContent,
-  SidebarFooter,
-  SidebarMenu,
-  SidebarMenuItem,
   SidebarTrigger,
   Main,
   Container,
@@ -28,74 +23,7 @@ import {
   Logo,
   Separator,
 } from "../";
-
-// Example sidebar content
-const ExampleSidebar = (
-  <>
-    <SidebarHeader title="Shaw Heritage" showLogo={true} />
-    <SidebarContent>
-      <div style={{ marginBottom: "16px" }}>
-        <h4
-          style={{
-            margin: "0 0 8px 0",
-            fontSize: "12px",
-            fontWeight: 600,
-            color: "hsl(var(--muted-foreground))",
-            textTransform: "uppercase",
-          }}
-        >
-          Main
-        </h4>
-        <SidebarMenu>
-          <SidebarMenuItem active>
-            <a href="#">Dashboard</a>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <a href="#">Collections</a>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <a href="#">Media</a>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <a href="#">Analytics</a>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </div>
-
-      <Separator />
-
-      <div style={{ marginTop: "16px" }}>
-        <h4
-          style={{
-            margin: "0 0 8px 0",
-            fontSize: "12px",
-            fontWeight: 600,
-            color: "hsl(var(--muted-foreground))",
-            textTransform: "uppercase",
-          }}
-        >
-          Management
-        </h4>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <a href="#">Users</a>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <a href="#">Settings</a>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <a href="#">Help</a>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </div>
-    </SidebarContent>
-    <SidebarFooter>
-      <Button variant="ghost" size="sm" style={{ width: "100%" }}>
-        Logout
-      </Button>
-    </SidebarFooter>
-  </>
-);
+import { ExampleSidebar } from "./ExampleSidebar";
 
 
 // Example main content
@@ -298,7 +226,7 @@ export const CompleteLayoutExample: React.FC = () => {
     <SidebarProvider>
       <PageLayout
         showSidebar={true}
-        sidebar={ExampleSidebar}
+        sidebar={<ExampleSidebar activePath="#" />}
         containerSize="full"
       >
         {ExampleContent}
