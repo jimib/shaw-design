@@ -104,6 +104,9 @@ export namespace theme {
                 vintage: string;
             };
             shadows: {
+                subtle: string;
+                elevated: string;
+                card: string;
                 elegant: string;
                 glow: string;
             };
@@ -143,6 +146,9 @@ export namespace theme {
                     "--gradient-card": string;
                     "--gradient-vintage": string;
                     "--shadow-elegant": string;
+                    "--shadow-subtle": string;
+                    "--shadow-elevated": string;
+                    "--shadow-card": string;
                     "--shadow-glow": string;
                     "--transition-smooth": string;
                     "--transition-spring": string;

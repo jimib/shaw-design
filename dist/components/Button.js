@@ -1,9 +1,10 @@
-import { jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import styled from "styled-components";
 const StyledButton = styled.button `
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: ${({ theme }) => theme.spacing.xs};
   border: none;
   border-radius: 8px;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
@@ -154,6 +155,29 @@ const StyledButton = styled.button `
     }
 }}
 `;
-export const Button = ({ children, variant = "primary", size = "md", compact = false, disabled = false, onClick, type = "button", className, style, }) => {
-    return (_jsx(StyledButton, { "$variant": variant, "$size": size, "$compact": compact, "$disabled": disabled, onClick: onClick, type: type, className: className, style: style, disabled: disabled, children: children }));
+const IconWrapper = styled.span `
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  
+  ${({ $size }) => {
+    switch ($size) {
+        case "sm":
+            return `width: 14px; height: 14px;`;
+        case "lg":
+            return `width: 20px; height: 20px;`;
+        default:
+            return `width: 16px; height: 16px;`;
+    }
+}}
+  
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
+export const Button = ({ children, variant = "primary", size = "md", compact = false, disabled = false, onClick, type = "button", className, style, icon: Icon, iconPosition = "left", }) => {
+    const iconElement = Icon ? (_jsx(IconWrapper, { "$size": size, children: _jsx(Icon, {}) })) : null;
+    return (_jsxs(StyledButton, { "$variant": variant, "$size": size, "$compact": compact, "$disabled": disabled, onClick: onClick, type: type, className: className, style: style, disabled: disabled, children: [iconPosition === "left" && iconElement, children, iconPosition === "right" && iconElement] }));
 };

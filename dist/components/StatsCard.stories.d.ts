@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { StatsCard } from "./StatsCard";
+declare const meta: Meta<typeof StatsCard>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const WithLink: Story;
+export declare const WithClick: Story;
+export declare const NoChange: Story;
+export declare const Grid: Story;

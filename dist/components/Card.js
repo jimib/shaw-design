@@ -6,10 +6,7 @@ const StyledCard = styled.div `
     ? theme.spacing.card.padding.compact
     : theme.spacing.card.padding.default};
   margin: ${({ theme }) => theme.spacing.card.margin};
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: ${({ theme }) => theme.colors.transitions.smooth};
-  backdrop-filter: blur(8px);
+  transition: all 0.2s ease-in-out;
   cursor: ${({ $clickable }) => ($clickable ? "pointer" : "default")};
 
   ${({ $variant, theme }) => {
@@ -17,27 +14,40 @@ const StyledCard = styled.div `
         case "gradient":
             return `
           background: ${theme.colors.gradients.card};
-          border: 2px solid ${theme.colors.border};
+          border: 1px solid hsl(var(--border));
+          box-shadow: none;
         `;
         case "vintage":
             return `
           background: ${theme.colors.gradients.vintage};
-          border: 2px solid ${theme.colors.border};
+          border: 1px solid hsl(var(--border));
           box-shadow: ${theme.colors.shadows.elegant};
         `;
         default:
             return `
-          background: rgba(0, 0, 0, 0.6);
-          border: 2px solid  ${theme.colors.border};
+          background: hsl(var(--card));
+          border: 1px solid hsl(var(--border));
+          box-shadow: none;
         `;
     }
 }}
 
   &:hover {
-    transform: ${({ $clickable }) => $clickable ? "translateY(-2px)" : "none"};
-    box-shadow: ${({ theme, $clickable }) => $clickable
-    ? theme.colors.shadows.elegant
-    : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"};
+    ${({ $clickable, $variant }) => {
+    if ($clickable) {
+        if ($variant === "default") {
+            return `
+            border-color: hsl(var(--primary) / 0.2);
+            box-shadow: var(--shadow-elevated);
+          `;
+        }
+        return `
+          transform: translateY(-2px);
+          box-shadow: ${$variant === "vintage" ? "var(--shadow-elegant)" : "var(--shadow-elevated)"};
+        `;
+    }
+    return "";
+}}
   }
 `;
 export const Card = ({ children, variant = "default", compact = false, onClick, className, style, }) => {

@@ -64,7 +64,8 @@ const StyledSelect = styled.select `
 const SelectContainer = styled.div `
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: auto;
+  min-width: 70px;
 `;
 const SelectIcon = styled.div `
   position: absolute;
@@ -86,6 +87,6 @@ const SelectIcon = styled.div `
     transition: ${({ theme }) => theme.colors.transitions.smooth};
   }
 `;
-export const Select = ({ options, placeholder, error = false, success = false, warning = false, className, ...props }) => {
-    return (_jsxs(SelectContainer, { className: className, children: [_jsxs(StyledSelect, { "$error": error, "$success": success, "$warning": warning, ...props, children: [placeholder && (_jsx("option", { value: "", disabled: true, children: placeholder })), options.map((option) => (_jsx("option", { value: option.value, disabled: option.disabled, children: option.label }, option.value)))] }), _jsx(SelectIcon, {})] }));
+export const Select = ({ options, placeholder, error = false, success = false, warning = false, className, value, onChange, ...props }) => {
+    return (_jsxs(SelectContainer, { className: className, children: [_jsxs(StyledSelect, { "$error": error, "$success": success, "$warning": warning, value: value, onChange: onChange, ...props, children: [placeholder && (_jsx("option", { value: "", disabled: true, children: placeholder })), options.map((option) => (_jsx("option", { value: option.value, disabled: option.disabled, children: option.label }, option.value)))] }), _jsx(SelectIcon, {})] }));
 };

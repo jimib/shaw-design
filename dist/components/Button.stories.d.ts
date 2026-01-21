@@ -15,3 +15,5 @@ export declare const Disabled: Story;
 export declare const Compact: Story;
 export declare const CompactComparison: Story;
 export declare const AllVariants: Story;
+export declare const WithIcons: Story;
+export declare const IconOnly: Story;

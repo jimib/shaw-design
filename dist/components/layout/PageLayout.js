@@ -7,10 +7,6 @@ const LayoutWrapper = styled.div `
   display: flex;
   height: 100vh;
   background: hsl(var(--background));
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: var(--background-image);
   overflow: hidden;
   position: relative;
 

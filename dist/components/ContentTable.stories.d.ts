@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { ContentTable } from "./ContentTable";
+declare const meta: Meta<typeof ContentTable>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const WithSearch: Story;
+export declare const WithFilter: Story;
+export declare const WithClick: Story;
+export declare const Empty: Story;
