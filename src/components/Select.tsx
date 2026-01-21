@@ -85,7 +85,8 @@ const StyledSelect = styled.select<{
 const SelectContainer = styled.div`
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: auto;
+  min-width: 70px;
 `;
 
 const SelectIcon = styled.div`
@@ -116,6 +117,8 @@ export const Select: React.FC<SelectProps> = ({
   success = false,
   warning = false,
   className,
+  value,
+  onChange,
   ...props
 }) => {
   return (
@@ -124,6 +127,8 @@ export const Select: React.FC<SelectProps> = ({
         $error={error}
         $success={success}
         $warning={warning}
+        value={value}
+        onChange={onChange}
         {...props}
       >
         {placeholder && (

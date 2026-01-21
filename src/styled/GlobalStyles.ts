@@ -2,40 +2,56 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --background: 312 31% 8%;
-    --background-image: url("https://assets.myu.plus/shaw/assets/bg@1.0.0.jpg");
-    --foreground: 312 15% 92%;
-    --card: 312 25% 12%;
-    --card-foreground: 312 15% 92%;
-    --popover: 312 25% 12%;
-    --popover-foreground: 312 15% 92%;
-    --success: 142 76% 36%;
-    --success-foreground: 312 15% 92%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 312 31% 8%;
-    --info: 213 94% 68%;
-    --info-foreground: 312 15% 92%;
-    --primary: 320 65% 65%;
-    --primary-foreground: 312 31% 8%;
-    --secondary: 312 20% 18%;
-    --secondary-foreground: 312 15% 92%;
-    --muted: 312 20% 18%;
-    --muted-foreground: 312 10% 65%;
-    --accent: 320 65% 65%;
-    --accent-foreground: 312 31% 8%;
+    /* Apple-inspired clean palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+
+    /* Brand purple */
+    --primary: 270 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 11%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 36%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 11%;
+
     --destructive: 0 84% 60%;
-    --destructive-foreground: 312 15% 92%;
-    --border: 312 20% 20%;
-    --input: 312 20% 15%;
-    --ring: 320 65% 65%;
-    --radius: 0.5rem;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 91%;
+    --input: 0 0% 91%;
+    --ring: 270 70% 55%;
+
+    --radius: 0.75rem;
+
+    /* Semantic colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 11%;
+    --info: 213 94% 68%;
+    --info-foreground: 0 0% 100%;
     
-    /* Shaw Heritage Design System Extensions */
-    --gradient-primary: linear-gradient(135deg, hsl(320 65% 65%) 0%, hsl(330 55% 55%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(312 30% 15%) 100%);
-    --gradient-vintage: linear-gradient(135deg, hsl(320 45% 25%) 0%, hsl(310 35% 15%) 50%, hsl(300 25% 8%) 100%);
+    /* Custom tokens */
+    --shadow-subtle: 0 1px 3px 0 hsl(0 0% 0% / 0.04), 0 1px 2px -1px hsl(0 0% 0% / 0.04);
+    --shadow-elevated: 0 4px 6px -1px hsl(0 0% 0% / 0.05), 0 2px 4px -2px hsl(0 0% 0% / 0.05);
+    --shadow-card: 0 1px 2px 0 hsl(0 0% 0% / 0.03);
     --shadow-elegant: 0 20px 25px -5px rgba(139, 69, 139, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-    --shadow-glow: 0 0 40px hsl(320 65% 65% / 0.2);
+    --shadow-glow: 0 0 40px hsl(270 70% 55% / 0.2);
+    
+    --gradient-primary: linear-gradient(135deg, hsl(270 70% 55%) 0%, hsl(280 60% 50%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(0 0% 98%) 100%);
+    --gradient-vintage: linear-gradient(135deg, hsl(270 45% 25%) 0%, hsl(260 35% 15%) 50%, hsl(250 25% 8%) 100%);
     
     /* Animation variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -86,10 +102,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: hsl(var(--background)) var(--background-image) no-repeat center center fixed;
-    background-size: cover;
+    background: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-family: ${({ theme }) => theme.typography.fontFamily.sans.join(", ")};
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Oxygen, Ubuntu, ${({ theme }) => theme.typography.fontFamily.sans.join(", ")};
     font-size: ${({ theme }) => theme.typography.fontSize.base};
     font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
     line-height: ${({ theme }) => theme.typography.lineHeight.normal};
@@ -103,6 +118,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
     line-height: ${({ theme }) => theme.typography.lineHeight.tight};
+    letter-spacing: -0.025em;
   }
 
   h1 {
@@ -195,5 +211,18 @@ export const GlobalStyles = createGlobalStyle`
     padding: 1rem;
     border-radius: 0.5rem;
     overflow-x: auto;
+  }
+
+  /* Shadow utility classes */
+  .shadow-subtle {
+    box-shadow: var(--shadow-subtle);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
   }
 `;

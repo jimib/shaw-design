@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
+import { Plus, Search, ArrowRight, Download, Upload } from "lucide-react";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -151,6 +152,54 @@ export const AllVariants: Story = {
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="cms">CMS</Button>
+    </div>
+  ),
+};
+
+export const WithIcons: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap gap-4 items-center">
+        <Button variant="primary" icon={Plus} iconPosition="left">
+          Add Item
+        </Button>
+        <Button variant="outline" icon={Search} iconPosition="left">
+          Search
+        </Button>
+        <Button variant="ghost" icon={ArrowRight} iconPosition="right">
+          Continue
+        </Button>
+        <Button variant="cms" icon={Upload} iconPosition="left">
+          Upload
+        </Button>
+      </div>
+      <div className="flex flex-wrap gap-4 items-center">
+        <Button variant="primary" size="sm" icon={Download} iconPosition="left">
+          Download
+        </Button>
+        <Button variant="outline" size="sm" icon={Search} iconPosition="right">
+          Search
+        </Button>
+        <Button variant="primary" size="lg" icon={Plus} iconPosition="left">
+          Create New
+        </Button>
+      </div>
+    </div>
+  ),
+};
+
+export const IconOnly: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-4 items-center">
+      <Button variant="primary" size="sm" icon={Plus} iconPosition="left" aria-label="Add">
+        <span style={{ width: 0, height: 0, overflow: "hidden" }}>Add</span>
+      </Button>
+      <Button variant="outline" size="sm" icon={Search} iconPosition="left" aria-label="Search">
+        <span style={{ width: 0, height: 0, overflow: "hidden" }}>Search</span>
+      </Button>
+      <Button variant="ghost" size="md" icon={Download} iconPosition="left" aria-label="Download">
+        <span style={{ width: 0, height: 0, overflow: "hidden" }}>Download</span>
+      </Button>
     </div>
   ),
 };

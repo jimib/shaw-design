@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { LucideIcon } from "lucide-react";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -11,6 +12,8 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   className?: string;
   style?: React.CSSProperties;
+  icon?: LucideIcon;
+  iconPosition?: "left" | "right";
 }
 
 const StyledButton = styled.button<{
@@ -22,6 +25,7 @@ const StyledButton = styled.button<{
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: ${({ theme }) => theme.spacing.xs};
   border: none;
   border-radius: 8px;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
@@ -174,6 +178,29 @@ const StyledButton = styled.button<{
   }}
 `;
 
+const IconWrapper = styled.span<{ $size: ButtonProps["size"] }>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  
+  ${({ $size }) => {
+    switch ($size) {
+      case "sm":
+        return `width: 14px; height: 14px;`;
+      case "lg":
+        return `width: 20px; height: 20px;`;
+      default:
+        return `width: 16px; height: 16px;`;
+    }
+  }}
+  
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 export const Button: React.FC<ButtonProps> = ({
   children,
   variant = "primary",
@@ -184,7 +211,15 @@ export const Button: React.FC<ButtonProps> = ({
   type = "button",
   className,
   style,
+  icon: Icon,
+  iconPosition = "left",
 }) => {
+  const iconElement = Icon ? (
+    <IconWrapper $size={size}>
+      <Icon />
+    </IconWrapper>
+  ) : null;
+
   return (
     <StyledButton
       $variant={variant}
@@ -197,7 +232,9 @@ export const Button: React.FC<ButtonProps> = ({
       style={style}
       disabled={disabled}
     >
+      {iconPosition === "left" && iconElement}
       {children}
+      {iconPosition === "right" && iconElement}
     </StyledButton>
   );
 };
