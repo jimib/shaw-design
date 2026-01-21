@@ -530,13 +530,13 @@ export const ExampleSidebar: React.FC<ExampleSidebarProps> = ({
                       const storyId = item.href.replace("?path=/story/", "").replace("--default", "");
                       const searchMatch = currentSearch.includes(`path=/story/${storyId}`);
                       const hashStoryId = currentHash.replace("#/story/", "").replace("--default", "");
-                      const isActive = item.href !== "#" && (
+                      const isActive = !!(item.href !== "#" && (
                         pathToCheck.includes(item.href) ||
                         searchMatch ||
                         hashStoryId === storyId ||
-                        (item.storyTitle && (currentSearch.toLowerCase().includes(item.storyTitle.toLowerCase().replace(/\//g, "-")) ||
-                                             currentHash.toLowerCase().includes(item.storyTitle.toLowerCase().replace(/\//g, "-"))))
-                      );
+                        (!!item.storyTitle && (currentSearch.toLowerCase().includes(item.storyTitle.toLowerCase().replace(/\//g, "-")) ||
+                                               currentHash.toLowerCase().includes(item.storyTitle.toLowerCase().replace(/\//g, "-"))))
+                      ));
                       return (
                         <li key={item.label}>
                           <SubMenuItem
@@ -589,13 +589,13 @@ export const ExampleSidebar: React.FC<ExampleSidebarProps> = ({
                       const storyId = item.href.replace("?path=/story/", "").replace("--default", "");
                       const searchMatch = currentSearch.includes(`path=/story/${storyId}`);
                       const hashStoryId = currentHash.replace("#/story/", "").replace("--default", "");
-                      const isActive = item.href !== "#" && (
+                      const isActive = !!(item.href !== "#" && (
                         pathToCheck.includes(item.href) ||
                         searchMatch ||
                         hashStoryId === storyId ||
-                        (item.storyTitle && (currentSearch.toLowerCase().includes(item.storyTitle.toLowerCase().replace(/\//g, "-")) ||
-                                             currentHash.toLowerCase().includes(item.storyTitle.toLowerCase().replace(/\//g, "-"))))
-                      );
+                        (!!item.storyTitle && (currentSearch.toLowerCase().includes(item.storyTitle.toLowerCase().replace(/\//g, "-")) ||
+                                               currentHash.toLowerCase().includes(item.storyTitle.toLowerCase().replace(/\//g, "-"))))
+                      ));
                       return (
                         <li key={item.label}>
                           <SubMenuItem
