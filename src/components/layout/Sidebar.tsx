@@ -58,6 +58,13 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
+  // Reset to closed when switching to mobile view
+  useEffect(() => {
+    if (isMobile) {
+      setIsOpen(false);
+    }
+  }, [isMobile]);
+
   const toggleSidebar = useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
@@ -67,7 +74,7 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({
   }, []);
 
   const contextValue = {
-    isOpen: isMobile ? false : isOpen,
+    isOpen,
     isMobile,
     toggleSidebar,
     setOpen,
@@ -155,14 +162,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
   className,
   variant = "default",
 }) => {
-  const { isOpen, isMobile } = useSidebar();
+  const { isOpen, isMobile, setOpen } = useSidebar();
 
   return (
     <>
       {isMobile && (
         <SidebarOverlay
           $isOpen={isOpen}
-          onClick={() => useSidebar().setOpen(false)}
+          onClick={() => setOpen(false)}
         />
       )}
       <StyledSidebar $isOpen={isOpen} $variant={variant} className={className}>

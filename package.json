@@ -14,7 +14,8 @@
     "dev": "tsc --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "eslint src --ext .ts,.tsx"
+    "lint": "eslint src --ext .ts,.tsx",
+    "release": "release-project"
   },
   "peerDependencies": {
     "react": ">=18.0.0 <20.0.0",

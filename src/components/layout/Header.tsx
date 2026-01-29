@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Logo } from "../Logo";
 import { Button } from "../Button";
+import { SidebarTrigger } from "./Sidebar";
 
 interface HeaderProps {
   children?: React.ReactNode;
@@ -13,6 +14,7 @@ interface HeaderProps {
   title?: string;
   subtitle?: string;
   actions?: React.ReactNode;
+  showSidebarTrigger?: boolean;
 }
 
 const StyledHeader = styled.header<{ $variant: HeaderProps["variant"] }>`
@@ -113,11 +115,13 @@ export const Header: React.FC<HeaderProps> = ({
   title,
   subtitle,
   actions,
+  showSidebarTrigger = false,
 }) => {
   return (
     <StyledHeader $variant={variant} className={className}>
       <HeaderContent $variant={variant}>
         <HeaderBrand>
+          {showSidebarTrigger && <SidebarTrigger />}
           {showLogo && <Logo variant={logoVariant} size={logoSize} />}
           {title && (
             <div>

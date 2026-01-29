@@ -79,29 +79,44 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   mainVariant = "default",
   containerSize = "lg",
 }) => {
-  const content = (
-    <LayoutWrapper $hasSidebar={showSidebar} className={className}>
-      {showSidebar && sidebar && (
-        <div className="sidebar">
-          <Sidebar variant={sidebarVariant}>{sidebar}</Sidebar>
-        </div>
-      )}
+  if (!showSidebar) {
+    return (
+      <LayoutWrapper $hasSidebar={false} className={className}>
+        <MainContent $hasSidebar={false} className="main-content">
+          {header}
 
-      <MainContent $hasSidebar={showSidebar} className="main-content">
-        {header}
-
-        <Main variant={mainVariant}>
-          <Container size={containerSize}>{children}</Container>
-        </Main>
-      </MainContent>
-    </LayoutWrapper>
-  );
-
-  if (showSidebar) {
-    return <SidebarProvider>{content}</SidebarProvider>;
+          <Main variant={mainVariant}>
+            <Container size={containerSize}>{children}</Container>
+          </Main>
+        </MainContent>
+      </LayoutWrapper>
+    );
   }
 
-  return content;
+  // Clone header and add showSidebarTrigger prop if it's a Header component
+  const enhancedHeader = header && React.isValidElement(header)
+    ? React.cloneElement(header, { showSidebarTrigger: true } as any)
+    : header;
+
+  return (
+    <SidebarProvider>
+      <LayoutWrapper $hasSidebar={showSidebar} className={className}>
+        {sidebar && (
+          <div className="sidebar">
+            <Sidebar variant={sidebarVariant}>{sidebar}</Sidebar>
+          </div>
+        )}
+
+        <MainContent $hasSidebar={showSidebar} className="main-content">
+          {enhancedHeader}
+
+          <Main variant={mainVariant}>
+            <Container size={containerSize}>{children}</Container>
+          </Main>
+        </MainContent>
+      </LayoutWrapper>
+    </SidebarProvider>
+  );
 };
 
 // Pre-built layout combinations
