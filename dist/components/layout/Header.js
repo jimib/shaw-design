@@ -1,6 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import styled from "styled-components";
 import { Logo } from "../Logo";
+import { SidebarTrigger } from "./Sidebar";
 const StyledHeader = styled.header `
   width: 100%;
   padding: ${({ theme }) => theme.spacing.header.padding};
@@ -79,6 +80,6 @@ const HeaderActions = styled.div `
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
 `;
-export const Header = ({ children, className, variant = "default", showLogo = true, logoVariant = "shaw", logoSize = 40, title, subtitle, actions, }) => {
-    return (_jsx(StyledHeader, { "$variant": variant, className: className, children: _jsxs(HeaderContent, { "$variant": variant, children: [_jsxs(HeaderBrand, { children: [showLogo && _jsx(Logo, { variant: logoVariant, size: logoSize }), title && (_jsxs("div", { children: [_jsx(HeaderTitle, { "$variant": variant, children: title }), subtitle && (_jsx(HeaderSubtitle, { "$variant": variant, children: subtitle }))] }))] }), actions && _jsx(HeaderActions, { children: actions }), children] }) }));
+export const Header = ({ children, className, variant = "default", showLogo = true, logoVariant = "shaw", logoSize = 40, title, subtitle, actions, showSidebarTrigger = false, }) => {
+    return (_jsx(StyledHeader, { "$variant": variant, className: className, children: _jsxs(HeaderContent, { "$variant": variant, children: [_jsxs(HeaderBrand, { children: [showSidebarTrigger && _jsx(SidebarTrigger, {}), showLogo && _jsx(Logo, { variant: logoVariant, size: logoSize }), title && (_jsxs("div", { children: [_jsx(HeaderTitle, { "$variant": variant, children: title }), subtitle && (_jsx(HeaderSubtitle, { "$variant": variant, children: subtitle }))] }))] }), actions && _jsx(HeaderActions, { children: actions }), children] }) }));
 };

@@ -1,4 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import React from "react";
 import styled from "styled-components";
 import { Main } from "./Main";
 import { Sidebar, SidebarProvider, } from "./Sidebar";
@@ -47,11 +48,14 @@ const MainContent = styled.div `
   `}
 `;
 export const PageLayout = ({ children, className, header, sidebar, showSidebar = false, sidebarVariant = "default", mainVariant = "default", containerSize = "lg", }) => {
-    const content = (_jsxs(LayoutWrapper, { "$hasSidebar": showSidebar, className: className, children: [showSidebar && sidebar && (_jsx("div", { className: "sidebar", children: _jsx(Sidebar, { variant: sidebarVariant, children: sidebar }) })), _jsxs(MainContent, { "$hasSidebar": showSidebar, className: "main-content", children: [header, _jsx(Main, { variant: mainVariant, children: _jsx(Container, { size: containerSize, children: children }) })] })] }));
-    if (showSidebar) {
-        return _jsx(SidebarProvider, { children: content });
+    if (!showSidebar) {
+        return (_jsx(LayoutWrapper, { "$hasSidebar": false, className: className, children: _jsxs(MainContent, { "$hasSidebar": false, className: "main-content", children: [header, _jsx(Main, { variant: mainVariant, children: _jsx(Container, { size: containerSize, children: children }) })] }) }));
     }
-    return content;
+    // Clone header and add showSidebarTrigger prop if it's a Header component
+    const enhancedHeader = header && React.isValidElement(header)
+        ? React.cloneElement(header, { showSidebarTrigger: true })
+        : header;
+    return (_jsx(SidebarProvider, { children: _jsxs(LayoutWrapper, { "$hasSidebar": showSidebar, className: className, children: [sidebar && (_jsx("div", { className: "sidebar", children: _jsx(Sidebar, { variant: sidebarVariant, children: sidebar }) })), _jsxs(MainContent, { "$hasSidebar": showSidebar, className: "main-content", children: [enhancedHeader, _jsx(Main, { variant: mainVariant, children: _jsx(Container, { size: containerSize, children: children }) })] })] }) }));
 };
 // Pre-built layout combinations
 export const AuthLayout = ({ children, }) => (_jsx(PageLayout, { mainVariant: "centered", containerSize: "sm", children: children }));

@@ -27,6 +27,12 @@ const useIsMobile = () => {
 export const SidebarProvider = ({ children, defaultOpen = true, }) => {
     const isMobile = useIsMobile();
     const [isOpen, setIsOpen] = useState(defaultOpen);
+    // Reset to closed when switching to mobile view
+    useEffect(() => {
+        if (isMobile) {
+            setIsOpen(false);
+        }
+    }, [isMobile]);
     const toggleSidebar = useCallback(() => {
         setIsOpen((prev) => !prev);
     }, []);
@@ -34,7 +40,7 @@ export const SidebarProvider = ({ children, defaultOpen = true, }) => {
         setIsOpen(open);
     }, []);
     const contextValue = {
-        isOpen: isMobile ? false : isOpen,
+        isOpen,
         isMobile,
         toggleSidebar,
         setOpen,
@@ -99,8 +105,8 @@ const SidebarOverlay = styled.div `
   }
 `;
 export const Sidebar = ({ children, className, variant = "default", }) => {
-    const { isOpen, isMobile } = useSidebar();
-    return (_jsxs(_Fragment, { children: [isMobile && (_jsx(SidebarOverlay, { "$isOpen": isOpen, onClick: () => useSidebar().setOpen(false) })), _jsx(StyledSidebar, { "$isOpen": isOpen, "$variant": variant, className: className, children: children })] }));
+    const { isOpen, isMobile, setOpen } = useSidebar();
+    return (_jsxs(_Fragment, { children: [isMobile && (_jsx(SidebarOverlay, { "$isOpen": isOpen, onClick: () => setOpen(false) })), _jsx(StyledSidebar, { "$isOpen": isOpen, "$variant": variant, className: className, children: children })] }));
 };
 const StyledSidebarHeader = styled.div `
   padding: ${({ theme }) => theme.spacing.lg};

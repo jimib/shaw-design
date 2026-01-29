@@ -9,6 +9,7 @@ interface HeaderProps {
     title?: string;
     subtitle?: string;
     actions?: React.ReactNode;
+    showSidebarTrigger?: boolean;
 }
 export declare const Header: React.FC<HeaderProps>;
 export {};
