@@ -131,7 +131,7 @@ const StyledButton = styled.button<{
           color: ${theme.colors.dark};
           border: 1px solid ${theme.colors.border};
           &:hover {
-            background: ${theme.colors.background};
+            background: ${theme.colors.border};
             color: ${theme.colors.dark};
           }
           &:focus {
