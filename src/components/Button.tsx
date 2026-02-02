@@ -128,14 +128,14 @@ const StyledButton = styled.button<{
       case "outline":
         return `
           background: transparent;
-          color: ${theme.colors.primary};
-          border: 2px solid ${theme.colors.primary};
+          color: ${theme.colors.dark};
+          border: 1px solid ${theme.colors.border};
           &:hover {
-            background: ${theme.colors.primary};
-            color: ${theme.colors.primaryForeground};
+            background: ${theme.colors.background};
+            color: ${theme.colors.dark};
           }
           &:focus {
-            box-shadow: 0 0 0 3px ${theme.colors.primary}20;
+            box-shadow: 0 0 0 3px ${theme.colors.muted}20;
           }
         `;
       case "ghost":
