@@ -1,6 +1,6 @@
 {
   "name": "@jimib/shaw-design",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Shared design system package for FeedAR micro-apps",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
