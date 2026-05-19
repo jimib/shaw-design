@@ -14,6 +14,7 @@ import { Separator } from "../Separator";
 interface SidebarContextType {
   isOpen: boolean;
   isMobile: boolean;
+  mobileBreakpoint: number;
   toggleSidebar: () => void;
   setOpen: (open: boolean) => void;
 }
@@ -29,18 +30,18 @@ export const useSidebar = () => {
 };
 
 // Mobile detection hook
-const useIsMobile = () => {
+const useIsMobile = (breakpoint: number = 768) => {
   const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < breakpoint);
     };
 
     checkIsMobile();
     window.addEventListener("resize", checkIsMobile);
     return () => window.removeEventListener("resize", checkIsMobile);
-  }, []);
+  }, [breakpoint]);
 
   return !!isMobile;
 };
@@ -49,13 +50,15 @@ const useIsMobile = () => {
 interface SidebarProviderProps {
   children: React.ReactNode;
   defaultOpen?: boolean;
+  mobileBreakpoint?: number;
 }
 
 export const SidebarProvider: React.FC<SidebarProviderProps> = ({
   children,
   defaultOpen = true,
+  mobileBreakpoint = 768,
 }) => {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(mobileBreakpoint);
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   // Reset to closed when switching to mobile view
@@ -76,6 +79,7 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({
   const contextValue = {
     isOpen,
     isMobile,
+    mobileBreakpoint,
     toggleSidebar,
     setOpen,
   };
@@ -97,6 +101,7 @@ interface SidebarProps {
 const StyledSidebar = styled.aside<{
   $isOpen: boolean;
   $variant: SidebarProps["variant"];
+  $mobileBreakpoint: number;
 }>`
   position: fixed;
   top: 0;
@@ -133,14 +138,14 @@ const StyledSidebar = styled.aside<{
     }
   }}
 
-  @media (min-width: 768px) {
+  @media (min-width: ${({ $mobileBreakpoint }) => $mobileBreakpoint}px) {
     position: fixed;
     transform: none;
     height: 100vh;
   }
 `;
 
-const SidebarOverlay = styled.div<{ $isOpen: boolean }>`
+const SidebarOverlay = styled.div<{ $isOpen: boolean; $mobileBreakpoint: number }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -152,7 +157,7 @@ const SidebarOverlay = styled.div<{ $isOpen: boolean }>`
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${({ $mobileBreakpoint }) => $mobileBreakpoint}px) {
     display: none;
   }
 `;
@@ -162,17 +167,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
   className,
   variant = "default",
 }) => {
-  const { isOpen, isMobile, setOpen } = useSidebar();
+  const { isOpen, isMobile, mobileBreakpoint, setOpen } = useSidebar();
 
   return (
     <>
       {isMobile && (
         <SidebarOverlay
           $isOpen={isOpen}
+          $mobileBreakpoint={mobileBreakpoint}
           onClick={() => setOpen(false)}
         />
       )}
-      <StyledSidebar $isOpen={isOpen} $variant={variant} className={className}>
+      <StyledSidebar $isOpen={isOpen} $variant={variant} $mobileBreakpoint={mobileBreakpoint} className={className}>
         {children}
       </StyledSidebar>
     </>

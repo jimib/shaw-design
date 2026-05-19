@@ -20,19 +20,20 @@ interface PageLayoutProps {
   sidebarVariant?: "default" | "floating" | "inset";
   mainVariant?: "default" | "centered" | "full-width";
   containerSize?: "sm" | "md" | "lg" | "xl" | "full";
+  mobileBreakpoint?: number;
 }
 
-const LayoutWrapper = styled.div<{ $hasSidebar: boolean }>`
+const LayoutWrapper = styled.div<{ $hasSidebar: boolean; $mobileBreakpoint: number }>`
   display: flex;
   height: 100vh;
   background: hsl(var(--background));
   overflow: hidden;
   position: relative;
 
-  ${({ $hasSidebar }) =>
+  ${({ $hasSidebar, $mobileBreakpoint }) =>
     $hasSidebar &&
     `
-    @media (min-width: 768px) {
+    @media (min-width: ${$mobileBreakpoint}px) {
       .sidebar {
         width: 280px;
         flex-shrink: 0;
@@ -42,7 +43,7 @@ const LayoutWrapper = styled.div<{ $hasSidebar: boolean }>`
         left: 0;
         z-index: 10;
       }
-      
+
       .main-content {
         flex: 1;
         margin-left: 280px;
@@ -53,17 +54,17 @@ const LayoutWrapper = styled.div<{ $hasSidebar: boolean }>`
   `}
 `;
 
-const MainContent = styled.div<{ $hasSidebar: boolean }>`
+const MainContent = styled.div<{ $hasSidebar: boolean; $mobileBreakpoint: number }>`
   flex: 1;
   display: flex;
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
 
-  ${({ $hasSidebar }) =>
+  ${({ $hasSidebar, $mobileBreakpoint }) =>
     $hasSidebar &&
     `
-    @media (min-width: 768px) {
+    @media (min-width: ${$mobileBreakpoint}px) {
       margin-left: 280px;
     }
   `}
@@ -78,11 +79,12 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   sidebarVariant = "default",
   mainVariant = "default",
   containerSize = "lg",
+  mobileBreakpoint = 768,
 }) => {
   if (!showSidebar) {
     return (
-      <LayoutWrapper $hasSidebar={false} className={className}>
-        <MainContent $hasSidebar={false} className="main-content">
+      <LayoutWrapper $hasSidebar={false} $mobileBreakpoint={mobileBreakpoint} className={className}>
+        <MainContent $hasSidebar={false} $mobileBreakpoint={mobileBreakpoint} className="main-content">
           {header}
 
           <Main variant={mainVariant}>
@@ -99,15 +101,15 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
     : header;
 
   return (
-    <SidebarProvider>
-      <LayoutWrapper $hasSidebar={showSidebar} className={className}>
+    <SidebarProvider mobileBreakpoint={mobileBreakpoint}>
+      <LayoutWrapper $hasSidebar={showSidebar} $mobileBreakpoint={mobileBreakpoint} className={className}>
         {sidebar && (
           <div className="sidebar">
             <Sidebar variant={sidebarVariant}>{sidebar}</Sidebar>
           </div>
         )}
 
-        <MainContent $hasSidebar={showSidebar} className="main-content">
+        <MainContent $hasSidebar={showSidebar} $mobileBreakpoint={mobileBreakpoint} className="main-content">
           {enhancedHeader}
 
           <Main variant={mainVariant}>
