@@ -2,6 +2,7 @@ import React from "react";
 interface SidebarContextType {
     isOpen: boolean;
     isMobile: boolean;
+    mobileBreakpoint: number;
     toggleSidebar: () => void;
     setOpen: (open: boolean) => void;
 }
@@ -9,6 +10,7 @@ export declare const useSidebar: () => SidebarContextType;
 interface SidebarProviderProps {
     children: React.ReactNode;
     defaultOpen?: boolean;
+    mobileBreakpoint?: number;
 }
 export declare const SidebarProvider: React.FC<SidebarProviderProps>;
 interface SidebarProps {

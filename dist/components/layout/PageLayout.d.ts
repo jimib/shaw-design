@@ -8,6 +8,7 @@ interface PageLayoutProps {
     sidebarVariant?: "default" | "floating" | "inset";
     mainVariant?: "default" | "centered" | "full-width";
     containerSize?: "sm" | "md" | "lg" | "xl" | "full";
+    mobileBreakpoint?: number;
 }
 export declare const PageLayout: React.FC<PageLayoutProps>;
 export declare const AuthLayout: React.FC<{

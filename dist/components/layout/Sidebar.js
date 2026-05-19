@@ -12,20 +12,20 @@ export const useSidebar = () => {
     return context;
 };
 // Mobile detection hook
-const useIsMobile = () => {
+const useIsMobile = (breakpoint = 768) => {
     const [isMobile, setIsMobile] = useState(undefined);
     useEffect(() => {
         const checkIsMobile = () => {
-            setIsMobile(window.innerWidth < 768);
+            setIsMobile(window.innerWidth < breakpoint);
         };
         checkIsMobile();
         window.addEventListener("resize", checkIsMobile);
         return () => window.removeEventListener("resize", checkIsMobile);
-    }, []);
+    }, [breakpoint]);
     return !!isMobile;
 };
-export const SidebarProvider = ({ children, defaultOpen = true, }) => {
-    const isMobile = useIsMobile();
+export const SidebarProvider = ({ children, defaultOpen = true, mobileBreakpoint = 768, }) => {
+    const isMobile = useIsMobile(mobileBreakpoint);
     const [isOpen, setIsOpen] = useState(defaultOpen);
     // Reset to closed when switching to mobile view
     useEffect(() => {
@@ -42,6 +42,7 @@ export const SidebarProvider = ({ children, defaultOpen = true, }) => {
     const contextValue = {
         isOpen,
         isMobile,
+        mobileBreakpoint,
         toggleSidebar,
         setOpen,
     };
@@ -82,7 +83,7 @@ const StyledSidebar = styled.aside `
     }
 }}
 
-  @media (min-width: 768px) {
+  @media (min-width: ${({ $mobileBreakpoint }) => $mobileBreakpoint}px) {
     position: fixed;
     transform: none;
     height: 100vh;
@@ -100,13 +101,13 @@ const SidebarOverlay = styled.div `
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${({ $mobileBreakpoint }) => $mobileBreakpoint}px) {
     display: none;
   }
 `;
 export const Sidebar = ({ children, className, variant = "default", }) => {
-    const { isOpen, isMobile, setOpen } = useSidebar();
-    return (_jsxs(_Fragment, { children: [isMobile && (_jsx(SidebarOverlay, { "$isOpen": isOpen, onClick: () => setOpen(false) })), _jsx(StyledSidebar, { "$isOpen": isOpen, "$variant": variant, className: className, children: children })] }));
+    const { isOpen, isMobile, mobileBreakpoint, setOpen } = useSidebar();
+    return (_jsxs(_Fragment, { children: [isMobile && (_jsx(SidebarOverlay, { "$isOpen": isOpen, "$mobileBreakpoint": mobileBreakpoint, onClick: () => setOpen(false) })), _jsx(StyledSidebar, { "$isOpen": isOpen, "$variant": variant, "$mobileBreakpoint": mobileBreakpoint, className: className, children: children })] }));
 };
 const StyledSidebarHeader = styled.div `
   padding: ${({ theme }) => theme.spacing.lg};
